@@ -1,0 +1,85 @@
+<%- include('partials/header', { title: 'Ranking', user: user }) %>
+
+<div class="scoreboard-container">
+  <h1 class="page-title">GLOBAL RANKING</h1>
+  
+  <div class="scoreboard-card">
+    <div class="scoreboard-header">
+      <span class="col-rank">#</span>
+      <span class="col-player">PLAYER</span>
+      <span class="col-score">POINTS</span>
+      <span class="col-games">W/G</span>
+    </div>
+    
+    <div class="scoreboard-body" id="scoreboard-body">
+      <% if (players && players.length > 0) { %>
+        <% players.forEach((player, index) => { %>
+          <div class="scoreboard-row <%= user && player.id === user.id ? 'current-user' : '' %> rank-<%= index < 3 ? index + 1 : 'normal' %>">
+            <span class="col-rank">
+              <% if (index === 0) { %>
+                <span class="medal gold">&#127942;</span>
+              <% } else if (index === 1) { %>
+                <span class="medal silver">&#129352;</span>
+              <% } else if (index === 2) { %>
+                <span class="medal bronze">&#129353;</span>
+              <% } else { %>
+                <%= index + 1 %>
+              <% } %>
+            </span>
+            <span class="col-player"><%= player.username %></span>
+            <span class="col-score"><%= player.total_score %></span>
+            <span class="col-games"><%= player.games_won %>/<%= player.games_played %></span>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="empty-state">
+          <p>No players yet. Be the first!</p>
+          <a href="/auth" class="btn btn-primary">START PLAYING</a>
+        </div>
+      <% } %>
+    </div>
+  </div>
+  
+  <div class="scoreboard-legend">
+    <p>W/G = Wins / Total Games</p>
+  </div>
+</div>
+
+<script>
+  // Auto-refresh scores every 10 seconds
+  setInterval(async () => {
+    try {
+      const response = await fetch('/api/scores');
+      const players = await response.json();
+      updateScoreboard(players);
+    } catch (e) {
+      console.error('Failed to refresh scores:', e);
+    }
+  }, 10000);
+  
+  function updateScoreboard(players) {
+    const body = document.getElementById('scoreboard-body');
+    const currentUserId = '<%= user ? user.id : "" %>';
+    
+    if (players.length === 0) {
+      body.innerHTML = '<div class="empty-state"><p>No players yet. Be the first!</p><a href="/auth" class="btn btn-primary">START PLAYING</a></div>';
+      return;
+    }
+    
+    body.innerHTML = players.map((player, index) => `
+      <div class="scoreboard-row ${currentUserId && player.id === currentUserId ? 'current-user' : ''} rank-${index < 3 ? index + 1 : 'normal'}">
+        <span class="col-rank">
+          ${index === 0 ? '<span class="medal gold">&#127942;</span>' : 
+            index === 1 ? '<span class="medal silver">&#129352;</span>' : 
+            index === 2 ? '<span class="medal bronze">&#129353;</span>' : 
+            index + 1}
+        </span>
+        <span class="col-player">${player.username}</span>
+        <span class="col-score">${player.total_score}</span>
+        <span class="col-games">${player.games_won}/${player.games_played}</span>
+      </div>
+    `).join('');
+  }
+</script>
+
+<%- include('partials/footer') %>
