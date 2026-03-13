@@ -12,7 +12,7 @@
     <% } %>
     
     <!-- Login Form -->
-    <form id="login-form" class="auth-form <%= mode === 'login' ? 'active' : '' %>" action="/auth/login" method="POST">
+    <form id="login-form" class="auth-form <%= mode === 'login' ? 'active' : '' %>" action="/auth/login" method="POST" aria-label="Login Form">
       <div class="form-group">
         <label for="login-email">Email</label>
         <input type="email" id="login-email" name="email" required placeholder="seu@email.com">
@@ -25,7 +25,7 @@
     </form>
     
     <!-- Signup Form -->
-    <form id="signup-form" class="auth-form <%= mode === 'signup' ? 'active' : '' %>" action="/auth/signup" method="POST">
+    <form id="signup-form" class="auth-form <%= mode === 'signup' ? 'active' : '' %>" action="/auth/signup" method="POST" aria-label="Sign-up Form">
       <div class="form-group">
         <label for="signup-username">Username</label>
         <input type="text" id="signup-username" name="username" required placeholder="pixel_master" minlength="3" maxlength="20">
