@@ -43,6 +43,24 @@ function getSupabaseClient(accessToken = null) {
   return createClient(supabaseUrl, supabaseAnonKey, options)
 }
 
+// Ensure user has a profile (creates one if missing - used instead of DB trigger)
+async function ensureProfile(supabase, user) {
+  const { data: existing } = await supabase
+    .from('profiles')
+    .select('id')
+    .eq('id', user.id)
+    .single()
+  if (existing) return
+  const username = user.user_metadata?.username || 'player_' + user.id.slice(0, 8)
+  await supabase.from('profiles').insert({
+    id: user.id,
+    username,
+    total_score: 0,
+    games_played: 0,
+    games_won: 0
+  })
+}
+
 // Auth middleware
 async function authMiddleware(req, res, next) {
   const accessToken = req.cookies['sb-access-token']
@@ -151,7 +169,8 @@ app.post('/auth/login', async (req, res) => {
   
   res.cookie('sb-access-token', data.session.access_token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', maxAge: 3600000 })
   res.cookie('sb-refresh-token', data.session.refresh_token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', maxAge: 604800000 })
-  
+  const supabaseWithAuth = getSupabaseClient(data.session.access_token)
+  await ensureProfile(supabaseWithAuth, data.session.user)
   res.redirect('/game')
 })
 
@@ -175,6 +194,8 @@ app.get('/auth/callback', async (req, res) => {
     if (!error && data.session) {
       res.cookie('sb-access-token', data.session.access_token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', maxAge: 3600000 })
       res.cookie('sb-refresh-token', data.session.refresh_token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', maxAge: 604800000 })
+      const supabaseWithAuth = getSupabaseClient(data.session.access_token)
+      await ensureProfile(supabaseWithAuth, data.session.user)
     }
   }
   res.redirect('/game')
@@ -183,7 +204,7 @@ app.get('/auth/callback', async (req, res) => {
 // Game page
 app.get('/game', requireAuth, async (req, res) => {
   const supabase = getSupabaseClient(req.accessToken)
-  
+  await ensureProfile(supabase, req.user)
   const { data: profile } = await supabase
     .from('profiles')
     .select('*')
