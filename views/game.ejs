@@ -15,19 +15,16 @@
   <div class="game-main">
     <div class="hangman-section">
       <div class="category-badge" id="category-badge">DESIGN</div>
-      <div class="hangman-drawing" id="hangman-drawing">
-        <!-- Gallows base -->
-        <div class="gallows-base"></div>
-        <div class="gallows-pole"></div>
-        <div class="gallows-top"></div>
-        <div class="gallows-rope"></div>
-        <!-- Body parts (hidden initially) -->
-        <div class="body-part head" data-part="0"></div>
-        <div class="body-part body" data-part="1"></div>
-        <div class="body-part left-arm" data-part="2"></div>
-        <div class="body-part right-arm" data-part="3"></div>
-        <div class="body-part left-leg" data-part="4"></div>
-        <div class="body-part right-leg" data-part="5"></div>
+      <div class="hangman-box" id="hangman-box">
+        <!-- Gallows (forca) -->
+        <img class="hangman-gallows" src="/hang.svg" alt="" aria-hidden="true">
+        <!-- Body parts (hidden initially, revealed on wrong guess) -->
+        <img class="body-part head" data-part="0" src="/dead.svg" alt="" aria-hidden="true">
+        <img class="body-part body" data-part="1" src="/body.svg" alt="" aria-hidden="true">
+        <img class="body-part left-arm" data-part="2" src="/arm-left.svg" alt="" aria-hidden="true">
+        <img class="body-part right-arm" data-part="3" src="/arm-right.svg" alt="" aria-hidden="true">
+        <img class="body-part left-leg" data-part="4" src="/leg-left.svg" alt="" aria-hidden="true">
+        <img class="body-part right-leg" data-part="5" src="/leg-right.svg" alt="" aria-hidden="true">
       </div>
     </div>
     

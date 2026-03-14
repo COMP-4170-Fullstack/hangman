@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108.79 428.21">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #6875ff;
+        stroke: #314aff;
+        stroke-miterlimit: 10;
+        stroke-width: .71px;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g>
+      <rect class="cls-1" x="81.44" y="400.85" width="27" height="27"/>
+      <rect class="cls-1" x="54.44" y="373.85" width="27" height="27"/>
+      <rect class="cls-1" x="27.44" y="346.85" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y="240.62" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y="267.62" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y="294.62" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y="321.62" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y="133.87" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y="160.87" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y="187.87" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y="214.87" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y="107.1" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y=".35" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y="27.35" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y="54.35" width="27" height="27"/>
+      <rect class="cls-1" x=".35" y="81.35" width="27" height="27"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= typeof title !== 'undefined' ? title : 'Pixel Hangman' %> - Design & Frontend</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jersey+20&family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="/" class="navbar-logo">
+        <image class="pixel-icon" src="/smile.svg" alt="Pixel Icon"/>
+        <span class="logo-text">PIXEL HANGMAN</span>
+      </a>
+      <div class="navbar-links">
+        <a href="/scoreboard" class="nav-link">Ranking</a>
+        <% if (user) { %>
+          <a href="/game" class="nav-link">Play</a>
+          <a href="/auth/logout" class="nav-link logout">Logout</a>
+        <% } else { %>
+          <a href="/auth" class="nav-link btn-primary">Login</a>
+        <% } %>
+      </div>
+    </div>
+  </nav>
+  <main class="main-content">
