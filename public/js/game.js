@@ -23,13 +23,13 @@ const gameStatus = document.getElementById('game-status');
 const currentScoreEl = document.getElementById('current-score');
 const newGameBtn = document.getElementById('new-game-btn');
 const modal = document.getElementById('game-modal');
-const modalIcon = document.getElementById('modal-icon');
-const modalTitle = document.getElementById('modal-title');
-const modalMessage = document.getElementById('modal-message');
-const modalWord = document.getElementById('modal-word');
-const modalScoreLabel = document.getElementById('modal-score-label');
-const modalScoreValue = document.getElementById('modal-score-value');
-const modalPlayAgain = document.getElementById('modal-play-again');
+const modalWinMessage = document.getElementById('modal-win-message');
+const modalWinWord = document.getElementById('modal-win-word');
+const modalWinScoreValue = document.getElementById('modal-win-score-value');
+const modalLoseWord = document.getElementById('modal-lose-word');
+const modalLoseScoreValue = document.getElementById('modal-lose-score-value');
+const modalWinContinueBtn = document.getElementById('modal-win-continue');
+const modalLosePlayAgainBtn = document.getElementById('modal-lose-play-again');
 
 // Initialize keyboard
 function initKeyboard() {
@@ -175,22 +175,13 @@ function showModal(won, points) {
   modal.classList.add(won ? 'win' : 'lose');
   
   if (won) {
-    modalIcon.innerHTML = '<img src="/smile.svg" alt="" class="modal-icon-img" aria-hidden="true">';
-    modalTitle.textContent = 'YOU WON!';
-    modalMessage.textContent = streak > 1 ? `${streak} wins in a row!` : 'Congratulations!';
-    modalScoreLabel.textContent = 'Points earned:';
-    modalScoreValue.textContent = `+${points}`;
-    modalPlayAgain.textContent = 'CONTINUE';
+    modalWinMessage.textContent = streak > 1 ? `${streak} wins in a row!` : 'Congratulations!';
+    modalWinWord.textContent = currentWord;
+    modalWinScoreValue.textContent = `+${points}`;
   } else {
-    modalIcon.innerHTML = '<img src="/skull.svg" alt="" class="modal-icon-img" aria-hidden="true">';
-    modalTitle.textContent = 'GAME OVER';
-    modalMessage.textContent = 'Try again!';
-    modalScoreLabel.textContent = 'Current score:';
-    modalScoreValue.textContent = score;
-    modalPlayAgain.textContent = 'PLAY AGAIN';
+    modalLoseWord.textContent = currentWord;
+    modalLoseScoreValue.textContent = score;
   }
-  
-  modalWord.textContent = currentWord;
 }
 
 // Update score on server
@@ -218,7 +209,8 @@ document.addEventListener('keydown', (e) => {
 
 // Event listeners
 newGameBtn.addEventListener('click', startNewGame);
-modalPlayAgain.addEventListener('click', startNewGame);
+modalWinContinueBtn.addEventListener('click', startNewGame);
+modalLosePlayAgainBtn.addEventListener('click', startNewGame);
 
 // Initialize game
 initKeyboard();

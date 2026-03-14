@@ -745,6 +745,15 @@ html {
     text-align: center;
 }
 
+.modal-state {
+    display: none;
+}
+
+.modal.win #modal-win-state,
+.modal.lose #modal-lose-state {
+    display: block;
+}
+
 .modal-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
@@ -781,12 +790,12 @@ html {
     display: block;
 }
 
-#modal-score-label {
+.modal-score-label {
     font-size: var(--font-size-small);
     color: var(--white);
 }
 
-#modal-score-value {
+.modal-score-value {
     font-size: var(--font-size-small);
     color: var(--white);
 }
@@ -799,8 +808,8 @@ html {
 .modal.win .modal-title,
 .modal.win .modal-message,
 .modal.win .modal-word,
-.modal.win #modal-score-label,
-.modal.win #modal-score-value {
+.modal.win .modal-score-label,
+.modal.win .modal-score-value {
     color: var(--lilac);
 }
 .modal.lose .modal-title {

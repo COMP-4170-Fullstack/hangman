@@ -1,0 +1,27 @@
+<div class="modal-content modal-state" id="modal-win-state">
+  <div class="modal-icon">
+    <img src="/smile.svg" alt="" class="modal-icon-img" aria-hidden="true">
+  </div>
+  <h2 class="modal-title">YOU WON!</h2>
+  <p class="modal-message" id="modal-win-message">Congratulations!</p>
+  <div class="modal-word">Answer: <strong id="modal-win-word"></strong></div>
+  <div class="modal-score">
+    <span class="modal-score-label">Points earned:</span>
+    <span class="modal-score-value" id="modal-win-score-value"></span>
+  </div>
+  <%- include('button', { label: 'CONTINUE', type: 'button', className: 'button-primary', id: 'modal-win-continue' }) %>
+</div>
+
+<div class="modal-content modal-state" id="modal-lose-state">
+  <div class="modal-icon">
+    <img src="/skull.svg" alt="" class="modal-icon-img" aria-hidden="true">
+  </div>
+  <h2 class="modal-title">GAME OVER</h2>
+  <p class="modal-message">Try again!</p>
+  <div class="modal-word">Answer: <strong id="modal-lose-word"></strong></div>
+  <div class="modal-score">
+    <span class="modal-score-label">Current score:</span>
+    <span class="modal-score-value" id="modal-lose-score-value"></span>
+  </div>
+  <%- include('button', { label: 'PLAY AGAIN', type: 'button', className: 'button-primary', id: 'modal-lose-play-again' }) %>
+</div>
