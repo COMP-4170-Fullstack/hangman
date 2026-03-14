@@ -422,24 +422,23 @@ html {
     padding: 0.75rem 1rem;
     background: var(--white);
     border: 2px solid var(--grey);
-    color: var(--lilac);
+    color: var(--light-lilac);
     font-size: var(--font-size-small);
     transition: border-color 0.2s;
 }
 
 .form-group input:focus {
     outline: none;
-    border-color: var(--lilac);
+    border-color: var(--voxel-cyan);
 }
 
 .error-message {
-    background: var(--red);
-    border: 2px solid var(--dark-red);
-    color: var(--white);
+    background: rgba(255, 71, 87, 0.2);
+    border: 2px solid var(--voxel-red);
+    color: var(--voxel-red);
     padding: 0.75rem;
     margin-bottom: 1rem;
-    font-size: var(--font-size-small);
-    text-align: center;
+    font-size: 0.85rem;
 }
 
 /*  -------------------------------------------------- SUCCESS PAGE -------------------------------------------------- */
