@@ -12,10 +12,12 @@
   <p class="hero-subtitle">Test your knowledge in Design, Frontend & Marketing</p>
   
   <div class="hero-buttons">
-    <% if (!user) { %>
-      <%- include('partials/button', { href: '/auth', label: 'GET STARTED', className: 'button-primary' }) %>
+    <% if (user) { %>
+      <a href="/game" class="button-primary">PLAY NOW</a>
+    <% } else { %>
+      <a href="/auth" class="button-primary">PLAY GAME NOW</a>
     <% } %>
-    <%- include('partials/button', { href: '/scoreboard', label: 'VIEW RANKING', className: 'button-primary' }) %>
+    <a href="/scoreboard" class="button-primary">VIEW RANKING</a>
   </div>
 </div>
 

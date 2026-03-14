@@ -3,8 +3,8 @@
 <div class="auth-container">
   <div class="auth-card">
     <div class="auth-tabs">
-      <%- include('partials/button', { label: 'LOGIN', type: 'button', className: 'auth-tab ' + (mode === 'login' ? 'active' : ''), dataMode: 'login' }) %>
-      <%- include('partials/button', { label: 'CREATE ACCOUNT', type: 'button', className: 'auth-tab ' + (mode === 'signup' ? 'active' : ''), dataMode: 'signup' }) %>
+      <button class="auth-tab <%= mode === 'login' ? 'active' : '' %>" data-mode="login">LOGIN</button>
+      <button class="auth-tab <%= mode === 'signup' ? 'active' : '' %>" data-mode="signup">CREATE ACCOUNT</button>
     </div>
     
     <% if (error) { %>
@@ -21,7 +21,7 @@
         <label for="login-password">Password</label>
         <input type="password" id="login-password" name="password" required placeholder="********" minlength="6">
       </div>
-      <%- include('partials/button', { label: 'LOGIN' }) %>
+      <%- include('partials/button-submit', { label: 'LOGIN', type: 'submit' }) %>
     </form>
     
     <!-- Signup Form -->
@@ -38,7 +38,7 @@
         <label for="signup-password">Password</label>
         <input type="password" id="signup-password" name="password" required placeholder="********" minlength="6">
       </div>
-      <%- include('partials/button', { label: 'CREATE ACCOUNT' }) %>
+      <%- include('partials/button-submit', { label: 'CREATE ACCOUNT', type: 'submit' }) %>
     </form>
   </div>
 </div>
