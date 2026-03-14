@@ -3,6 +3,7 @@
 const MAX_ERRORS = 6;
 const WIN_POINTS = 100;
 const STREAK_BONUS = 25;
+const MAX_WORD_REFRESHES = 5;
 
 let currentWord = '';
 let currentWordId = null;
@@ -11,6 +12,7 @@ let currentCategory = '';
 let guessedLetters = [];
 let errors = 0;
 let streak = 0;
+let wordRefreshCount = 0;
 let score = window.GAME_CONFIG.initialScore;
 let gameOver = false;
 
@@ -30,6 +32,14 @@ const modalLoseWord = document.getElementById('modal-lose-word');
 const modalLoseScoreValue = document.getElementById('modal-lose-score-value');
 const modalWinContinueBtn = document.getElementById('modal-win-continue');
 const modalLosePlayAgainBtn = document.getElementById('modal-lose-play-again');
+
+function updateNewWordButtonState() {
+  const refreshesLeft = Math.max(0, MAX_WORD_REFRESHES - wordRefreshCount);
+  const refreshLimitReached = !gameOver && wordRefreshCount >= MAX_WORD_REFRESHES;
+
+  newGameBtn.disabled = refreshLimitReached;
+  newGameBtn.textContent = refreshLimitReached ? 'ANSWER TO CONTINUE' : `NEW WORD (${refreshesLeft})`;
+}
 
 // Initialize keyboard
 function initKeyboard() {
@@ -173,6 +183,9 @@ function checkLose() {
 function showModal(won, points) {
   modal.classList.add('visible');
   modal.classList.add(won ? 'win' : 'lose');
+  // Player completed the round; refresh allowance resets for next word.
+  wordRefreshCount = 0;
+  updateNewWordButtonState();
   
   if (won) {
     modalWinMessage.textContent = streak > 1 ? `${streak} wins in a row!` : 'Congratulations!';
@@ -208,10 +221,23 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Event listeners
-newGameBtn.addEventListener('click', startNewGame);
+newGameBtn.addEventListener('click', () => {
+  if (!gameOver && wordRefreshCount >= MAX_WORD_REFRESHES) {
+    gameStatus.textContent = 'You reached 5 word refreshes. Solve this word to continue.';
+    return;
+  }
+
+  if (!gameOver) {
+    wordRefreshCount++;
+  }
+
+  startNewGame();
+  updateNewWordButtonState();
+});
 modalWinContinueBtn.addEventListener('click', startNewGame);
 modalLosePlayAgainBtn.addEventListener('click', startNewGame);
 
 // Initialize game
 initKeyboard();
+updateNewWordButtonState();
 startNewGame();
