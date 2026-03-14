@@ -34,7 +34,7 @@
       <% } else { %>
         <div class="empty-state">
           <p>No players yet. Be the first!</p>
-          <a href="/auth" class="btn btn-primary">START PLAYING</a>
+          <%- include('partials/button', { href: '/auth', label: 'START PLAYING', className: 'btn btn-primary' }) %>
         </div>
       <% } %>
     </div>
@@ -60,9 +60,10 @@
   function updateScoreboard(players) {
     const body = document.getElementById('scoreboard-body');
     const currentUserId = '<%= user ? user.id : "" %>';
+    const emptyStateHtml = `<div class="empty-state"><p>No players yet. Be the first!</p><%- include('partials/button', { href: '/auth', label: 'START PLAYING', className: 'btn btn-primary' }) %></div>`;
     
     if (players.length === 0) {
-      body.innerHTML = '<div class="empty-state"><p>No players yet. Be the first!</p><a href="/auth" class="btn btn-primary">START PLAYING</a></div>';
+      body.innerHTML = emptyStateHtml;
       return;
     }
     
