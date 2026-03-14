@@ -6,8 +6,6 @@
     margin: 0;
     padding: 0;
     font-family: var(--font-jersey);
-    letter-spacing: var(--letter-spacing);
-    text-transform: var(--text-all-caps);
 }
 
 :root {
@@ -22,16 +20,11 @@
 
     /* Font styles */
     --font-jersey: "Jersey 20", sans-serif;
-
     --font-size-extra-large: 80px;
     --font-size-large: 60px;
     --font-size-medium: 32px;
     --font-size-regular: 24px;
     --font-size-small: 20px;
-
-    --letter-spacing: 2px;
-
-    --text-all-caps: uppercase;
 
     /* DELETE this later */
     --bg-dark: #1a1a2e;
@@ -51,11 +44,25 @@
     --font-sans: "Inter", sans-serif;
 }
 
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 /* Navbar */
 .navbar {
-    background: var(--light-lilac);
-    border-bottom: 5px solid var(--lilac);
+    background: var(--bg-card);
+    border-bottom: 3px solid var(--voxel-cyan);
     padding: 1rem;
+    box-shadow: 0 4px 0 rgba(0, 212, 170, 0.2);
 }
 
 .navbar-container {
@@ -70,24 +77,18 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-family: var(--font-jersey);
-    font-size: var(--font-size-medium);
-    letter-spacing: var(--letter-spacing);
-    color: var(--lilac);
     text-decoration: none;
-    transition:
-        color 0.2s,
-        transform 0.2s;
-    transform-origin: left center;
+    color: var(--text-primary);
 }
 
 .logo-icon {
     width: 60px;
 }
 
-.navbar-logo:hover {
-    color: var(--purple);
-    transform: scale(1.1);
+.logo-text {
+    font-family: var(--font-jersey);
+    font-size: 0.7rem;
+    letter-spacing: 4px;
 }
 
 .navbar-links {
@@ -97,15 +98,14 @@
 }
 
 .nav-link {
-    color: var(--lilac);
-    font-size: var(--font-size-regular);
+    color: var(--text-primary);
     text-decoration: none;
-    text-transform: var(--text-all-caps);
+    font-weight: 500;
     transition: color 0.2s;
 }
 
 .nav-link:hover {
-    color: var(--purple);
+    color: var(--voxel-cyan);
 }
 
 .nav-link.logout {

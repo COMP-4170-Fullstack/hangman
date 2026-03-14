@@ -6,8 +6,6 @@
     margin: 0;
     padding: 0;
     font-family: var(--font-jersey);
-    letter-spacing: var(--letter-spacing);
-    text-transform: var(--text-all-caps);
 }
 
 :root {
@@ -30,8 +28,6 @@
     --font-size-small: 20px;
 
     --letter-spacing: 2px;
-
-    --text-all-caps: uppercase;
 
     /* DELETE this later */
     --bg-dark: #1a1a2e;
@@ -97,15 +93,15 @@
 }
 
 .nav-link {
-    color: var(--lilac);
+    color: var(--liac);
     font-size: var(--font-size-regular);
     text-decoration: none;
-    text-transform: var(--text-all-caps);
+    font-weight: 500;
     transition: color 0.2s;
 }
 
 .nav-link:hover {
-    color: var(--purple);
+    color: var(--voxel-cyan);
 }
 
 .nav-link.logout {
