@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #6875ff;
+        stroke: #314aff;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-miterlimit: 10;
+        stroke-width: .71px;
+      }
+
+      .cls-2 {
+        fill: #f7f7f7;
+        stroke: #d8d8d8;
+      }
+    </style>
+  </defs>
+  <rect class="cls-2" x="421.5" y="45.75" width="27" height="27"/>
+  <rect class="cls-2" x="421.5" y="72.75" width="27" height="27"/>
+  <rect class="cls-2" x="421.5" y="95.25" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="259.26" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="286.26" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="313.26" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="340.26" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="152.51" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="179.51" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="206.51" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="233.51" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="125.74" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="19" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="46" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="73" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="100" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="473.25" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="500.25" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="527.25" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="554.25" width="27" height="27"/>
+  <rect class="cls-1" x="205.5" y="554.25" width="27" height="27"/>
+  <rect class="cls-1" x="151.5" y="554.25" width="27" height="27"/>
+  <rect class="cls-1" x="259.5" y="554.25" width="27" height="27"/>
+  <rect class="cls-1" x="286.5" y="554.25" width="27" height="27"/>
+  <rect class="cls-1" x="232.5" y="554.25" width="27" height="27"/>
+  <rect class="cls-1" x="232.5" y="18.75" width="27" height="27"/>
+  <rect class="cls-1" x="259.5" y="18.75" width="27" height="27"/>
+  <rect class="cls-1" x="205.5" y="18.75" width="27" height="27"/>
+  <rect class="cls-1" x="313.5" y="18.75" width="27" height="27"/>
+  <rect class="cls-1" x="340.5" y="18.75" width="27" height="27"/>
+  <rect class="cls-1" x="286.5" y="18.75" width="27" height="27"/>
+  <rect class="cls-1" x="394.5" y="18.75" width="27" height="27"/>
+  <rect class="cls-1" x="367.5" y="18.75" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="366.5" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="393.5" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="420.5" width="27" height="27"/>
+  <rect class="cls-1" x="178.5" y="447.5" width="27" height="27"/>
+  <rect class="cls-1" x="421.5" y="18.75" width="27" height="27"/>
+</svg>
