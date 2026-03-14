@@ -13,6 +13,7 @@ let guessedLetters = [];
 let errors = 0;
 let streak = 0;
 let wordRefreshCount = 0;
+let shouldResetHangman = true;
 let score = window.GAME_CONFIG.initialScore;
 let gameOver = false;
 
@@ -78,7 +79,6 @@ async function startNewGame() {
   currentHint = wordData.hint || '';
   currentCategory = wordData.category || 'DESIGN';
   guessedLetters = [];
-  errors = 0;
   gameOver = false;
   
   // Reset UI
@@ -92,10 +92,14 @@ async function startNewGame() {
     key.classList.remove('correct', 'wrong');
   });
   
-  // Reset hangman
-  document.querySelectorAll('.body-part').forEach(part => {
-    part.classList.remove('visible');
-  });
+  if (shouldResetHangman) {
+    errors = 0;
+    // Full reset only after game over (or first load)
+    document.querySelectorAll('.body-part').forEach(part => {
+      part.classList.remove('visible');
+    });
+    shouldResetHangman = false;
+  }
   
   // Update word display
   updateWordDisplay();
@@ -170,6 +174,8 @@ function checkLose() {
   if (errors >= MAX_ERRORS) {
     gameOver = true;
     streak = 0;
+    // Next round starts fresh after full hangman is collected.
+    shouldResetHangman = true;
     
     // Update server
     updateScore(score, false, currentWordId, 0);
