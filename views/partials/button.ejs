@@ -1,0 +1,12 @@
+<%
+  const isLink = typeof href !== 'undefined'
+  const resolvedClassName = typeof className !== 'undefined'
+    ? className
+    : (isLink ? 'button-primary' : 'button-primary button-full')
+  const resolvedId = typeof id !== 'undefined' ? id : null
+%>
+<% if (isLink) { %>
+  <a href="<%= href %>" class="<%= resolvedClassName %>"<% if (resolvedId) { %> id="<%= resolvedId %>"<% } %><% if (typeof dataMode !== 'undefined') { %> data-mode="<%= dataMode %>"<% } %>><%= label %></a>
+<% } else { %>
+  <button type="<%= typeof type !== 'undefined' ? type : 'submit' %>" class="<%= resolvedClassName %>"<% if (resolvedId) { %> id="<%= resolvedId %>"<% } %><% if (typeof dataMode !== 'undefined') { %> data-mode="<%= dataMode %>"<% } %>><%= label %></button>
+<% } %>

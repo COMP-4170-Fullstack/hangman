@@ -180,12 +180,14 @@ function showModal(won, points) {
     modalMessage.textContent = streak > 1 ? `${streak} wins in a row!` : 'Congratulations!';
     modalScoreLabel.textContent = 'Points earned:';
     modalScoreValue.textContent = `+${points}`;
+    modalPlayAgain.textContent = 'CONTINUE';
   } else {
     modalIcon.innerHTML = '<img src="/skull.svg" alt="" class="modal-icon-img" aria-hidden="true">';
     modalTitle.textContent = 'GAME OVER';
     modalMessage.textContent = 'Try again!';
     modalScoreLabel.textContent = 'Current score:';
     modalScoreValue.textContent = score;
+    modalPlayAgain.textContent = 'PLAY AGAIN';
   }
   
   modalWord.textContent = currentWord;

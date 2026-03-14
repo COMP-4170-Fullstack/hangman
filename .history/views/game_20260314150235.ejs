@@ -40,7 +40,7 @@
   </div>
   
   <div class="game-actions">
-    <%- include('partials/button', { label: 'NEW WORD', type: 'button', className: 'button-primary', id: 'new-game-btn' }) %>
+    <button class="btn btn-secondary" id="new-game-btn">NEW WORD</button>
   </div>
 </div>
 
@@ -50,12 +50,12 @@
     <div class="modal-icon" id="modal-icon"></div>
     <h2 class="modal-title" id="modal-title"></h2>
     <p class="modal-message" id="modal-message"></p>
-    <div class="modal-word">Answer: <strong id="modal-word"></strong></div>
+    <div class="modal-word">The word was: <strong id="modal-word"></strong></div>
     <div class="modal-score">
       <span id="modal-score-label"></span>
       <span id="modal-score-value"></span>
     </div>
-    <%- include('partials/button', { label: 'PLAY AGAIN', type: 'button', className: 'button-primary', id: 'modal-play-again' }) %>
+    <button class="btn btn-primary" id="modal-play-again">PLAY AGAIN</button>
   </div>
 </div>
 

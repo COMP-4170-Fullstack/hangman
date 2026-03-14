@@ -144,10 +144,6 @@ html {
     background-color: var(--lilac);
 }
 
-.button-full {
-    width: 100%;
-}
-
 /*  -------------------------------------------------- HOME PAGE-------------------------------------------------- */
 .hero {
     text-align: center;
