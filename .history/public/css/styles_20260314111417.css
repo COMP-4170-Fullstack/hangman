@@ -55,7 +55,7 @@ html {
     --font-sans: "Inter", sans-serif;
 }
 
-/*  -------------------------------------------------- HEADER -------------------------------------------------- */
+/* Navbar */
 .navbar {
     background: var(--light-lilac);
     border-bottom: 5px solid var(--lilac);
@@ -116,7 +116,7 @@ html {
     color: var(--voxel-red);
 }
 
-/*  -------------------------------------------------- MAIN CONTENT -------------------------------------------------- */
+/* Main Content */
 .main-content {
     flex: 1;
     padding: 2rem 1rem;
@@ -125,10 +125,10 @@ html {
     width: 100%;
 }
 
-/*  -------------------------------------------------- BUTTONS -------------------------------------------------- */
+/* Buttons */
 .button-primary {
     font-family: var(--font-jersey);
-    font-size: var(--font-size-regular);
+    font-size: var(--font-size-large);
     padding: 1rem 1.5rem;
     border: none;
     cursor: pointer;
@@ -140,20 +140,47 @@ html {
     color: var(--white);
 }
 
-.button-primary:hover {
-    background-color: var(--lilac);
+.btn:active {
+    transform: translateY(2px);
+    border: 2px solid var(--lilac);
 }
 
-/*  -------------------------------------------------- HOME PAGE-------------------------------------------------- */
+.btn-primary {
+    background: var(--voxel-cyan);
+    color: var(--bg-dark);
+}
+
+.btn-primary:hover {
+    background: #00e6b8;
+}
+
+.btn-secondary {
+    background: var(--bg-card);
+    color: var(--text-primary);
+    border: 2px solid var(--voxel-cyan);
+}
+
+.btn-secondary:hover {
+    background: var(--border-color);
+}
+
+.btn-large {
+    padding: 1.25rem 2rem;
+    font-size: 0.7rem;
+}
+
+.btn-full {
+    width: 100%;
+}
+
+/* Hero Section */
 .hero {
     text-align: center;
     padding: 4rem 1rem;
     position: relative;
 }
 
-/*  ------ PIXELS ------ */
-
-.pixel-decorations {
+.voxel-decorations {
     position: absolute;
     top: 0;
     left: 0;
@@ -163,7 +190,7 @@ html {
     overflow: hidden;
 }
 
-.pixel {
+.voxel-diamond {
     position: absolute;
     width: 20px;
     height: 20px;
@@ -171,21 +198,21 @@ html {
     animation: float 3s ease-in-out infinite;
 }
 
-.pixel.lilac {
+.voxel-diamond.voxel-lilac {
     background: var(--lilac);
     top: 20%;
     left: 10%;
     animation-delay: 0s;
 }
 
-.pixel.purple {
+.voxel-diamond.voxel-purple {
     background: var(--purple);
     top: 30%;
     right: 15%;
     animation-delay: 1s;
 }
 
-.pixel.light-lilac {
+.voxel-diamond.voxel-light-lilac {
     background: var(--light-lilac);
     bottom: 20%;
     left: 20%;
@@ -202,7 +229,6 @@ html {
     }
 }
 
-/*  ------ HERO SECTION ------ */
 .hero-title {
     font-family: var(--font-jersey);
     font-size: var(--font-size-extra-large);
@@ -223,17 +249,17 @@ html {
     flex-wrap: wrap;
 }
 
-/*  ------ HOW TO PLAY ------ */
+/* Features */
 .features {
     padding: 3rem 0;
 }
 
 .section-title {
-    font-family: var(--font-jerseY);
-    font-size: var(--font-size-medium);
+    font-family: var(--font-pixel);
+    font-size: 1rem;
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--lilac);
+    color: var(--voxel-cyan);
 }
 
 .features-grid {
@@ -243,9 +269,9 @@ html {
 }
 
 .feature-card {
-    background: var(--light-lilac);
+    background: var(--bg-card);
     padding: 2rem;
-    border: 3px solid var(--lilac);
+    border: 2px solid var(--border-color);
     text-align: center;
 }
 
@@ -256,25 +282,34 @@ html {
     align-items: center;
     justify-content: center;
     margin: 0 auto 1rem;
-    font-family: var(--font-jersey);
-    font-size: var(--font-size-regular);
-    color: var(--white);
-    background: var(--purple);
+    font-family: var(--font-pixel);
+    font-size: 1.2rem;
+    color: var(--bg-dark);
+}
+
+.feature-icon.voxel-cyan {
+    background: var(--voxel-cyan);
+}
+.feature-icon.voxel-magenta {
+    background: var(--voxel-magenta);
+}
+.feature-icon.voxel-yellow {
+    background: var(--voxel-yellow);
 }
 
 .feature-card h3 {
     font-family: var(--font-pixel);
     font-size: 0.7rem;
     margin-bottom: 0.75rem;
-    color: var(--purple);
 }
 
 .feature-card p {
-    color: var(--lilac);
-    font-size: var(--font-size-small);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
 }
 
-/*  ------ TOP PLAYERS ------ */
+/* Top Players */
 .top-players {
     padding: 3rem 0;
 }
@@ -287,17 +322,23 @@ html {
 }
 
 .top-player-card {
-    background: var(--purple);
+    background: var(--bg-card);
     padding: 1.5rem 2rem;
-    border: 2px solid var(--lilac);
+    border: 2px solid var(--border-color);
     display: flex;
     align-items: center;
     gap: 1rem;
     min-width: 200px;
 }
 
-.top-player-card {
-    border-color: var(--lilac);
+.top-player-card.rank-1 {
+    border-color: var(--voxel-yellow);
+}
+.top-player-card.rank-2 {
+    border-color: #c0c0c0;
+}
+.top-player-card.rank-3 {
+    border-color: #cd7f32;
 }
 
 .rank-badge {
@@ -306,10 +347,20 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-jersey);
+    font-family: var(--font-pixel);
     font-size: 1rem;
-    background: var(--lilac);
-    color: var(--white);
+    background: var(--voxel-cyan);
+    color: var(--bg-dark);
+}
+
+.rank-1 .rank-badge {
+    background: var(--voxel-yellow);
+}
+.rank-2 .rank-badge {
+    background: #c0c0c0;
+}
+.rank-3 .rank-badge {
+    background: #cd7f32;
 }
 
 .player-info {
@@ -319,16 +370,16 @@ html {
 }
 
 .player-name {
-    font-size: var(--font-size-small);
-    color: var(--white);
+    font-weight: 600;
 }
 
 .player-score {
-    font-size: var(--font-size-small);
-    color: var(--light-lilac);
+    font-family: var(--font-pixel);
+    font-size: 0.6rem;
+    color: var(--voxel-cyan);
 }
 
-/*  ------ CATEGORIES ------ */
+/* Categories */
 .categories {
     padding: 3rem 0;
 }
@@ -340,31 +391,34 @@ html {
 }
 
 .category-card {
-    background: var(--light-lilac);
+    background: var(--bg-card);
     padding: 2rem;
-    border: 3px solid var(--lilac);
+    border: 2px solid var(--border-color);
     text-align: center;
     transition: border-color 0.2s;
 }
 
+.category-card:hover {
+    border-color: var(--voxel-cyan);
+}
+
 .category-icon {
-    font-size: var(--font-size-medium);
+    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
 .category-card h3 {
-    font-family: var(--font-jersey);
-    font-size: var(--font-size-regular);
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
     margin-bottom: 0.5rem;
-    color: var(--purple);
 }
 
 .category-card p {
-    color: var(--lilac);
+    color: var(--text-muted);
+    font-size: 0.85rem;
 }
 
-/*  -------------------------------------------------- LOGIN / SIGN IN PAGE -------------------------------------------------- */
-
+/* Auth Page */
 .auth-container {
     max-width: 400px;
     margin: 2rem auto;
@@ -445,7 +499,7 @@ html {
     font-size: 0.85rem;
 }
 
-/*  -------------------------------------------------- SUCCESS PAGE -------------------------------------------------- */
+/* Success Page */
 .success-container {
     max-width: 500px;
     margin: 3rem auto;
@@ -482,8 +536,7 @@ html {
     margin-bottom: 2rem;
 }
 
-/*  -------------------------------------------------- GAME PAGE -------------------------------------------------- */
-
+/* Game Page */
 .game-container {
     max-width: 800px;
     margin: 0 auto;
@@ -860,7 +913,7 @@ html {
     border-color: var(--voxel-red);
 }
 
-/*  -------------------------------------------------- SCOREBOARD PAGE -------------------------------------------------- */
+/* Scoreboard Page */
 .scoreboard-container {
     max-width: 700px;
     margin: 0 auto;
@@ -960,18 +1013,16 @@ html {
     font-size: 0.85rem;
 }
 
-/*  -------------------------------------------------- FOOTER -------------------------------------------------- */
-
+/* Footer */
 .footer {
     padding: 1.5rem;
     text-align: center;
-    border-top: 5px solid var(--light-lilac);
-    color: var(--lilac);
+    border-top: 2px solid var(--border-color);
+    color: var(--text-muted);
     font-size: 0.85rem;
 }
 
-/*  -------------------------------------------------- RESPONSIVE -------------------------------------------------- */
-
+/* Responsive */
 @media (max-width: 768px) {
     .hero-title {
         font-size: 1.3rem;

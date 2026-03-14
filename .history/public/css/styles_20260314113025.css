@@ -55,7 +55,7 @@ html {
     --font-sans: "Inter", sans-serif;
 }
 
-/*  -------------------------------------------------- HEADER -------------------------------------------------- */
+/*  -------------------------------------------------- NAVBAR -------------------------------------------------- */
 .navbar {
     background: var(--light-lilac);
     border-bottom: 5px solid var(--lilac);
@@ -965,13 +965,12 @@ html {
 .footer {
     padding: 1.5rem;
     text-align: center;
-    border-top: 5px solid var(--light-lilac);
-    color: var(--lilac);
+    border-top: 5px solid var(--lilac);
+    color: var(--light-lilac);
     font-size: 0.85rem;
 }
 
-/*  -------------------------------------------------- RESPONSIVE -------------------------------------------------- */
-
+/* Responsive */
 @media (max-width: 768px) {
     .hero-title {
         font-size: 1.3rem;

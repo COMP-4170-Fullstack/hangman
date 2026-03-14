@@ -1,11 +1,6 @@
 <%- include('partials/header', { title: 'Home', user: user }) %>
 
-<div class="hero">
-  <div class="pixel-decorations">
-    <div class="pixel lilac"></div>
-    <div class="pixel purple"></div>
-    <div class=" pixel light-lilac"></div>
-  </div>
+
   
   <!-- ADD LOGO HERE -->
   <h1 class="hero-title">PIXEL HANGMAN</h1>
@@ -13,11 +8,11 @@
   
   <div class="hero-buttons">
     <% if (user) { %>
-      <a href="/game" class="button-primary">PLAY NOW</a>
+      <a href="/game" class="btn btn-primary btn-large">PLAY NOW</a>
     <% } else { %>
-      <a href="/auth" class="button-primary">GET STARTED</a>
+      <a href="/auth" class="btn btn-primary btn-large">GET STARTED</a>
     <% } %>
-    <a href="/scoreboard" class="button-primary">VIEW RANKING</a>
+    <a href="/scoreboard" class="btn btn-secondary btn-large">VIEW RANKING</a>
   </div>
 </div>
 
