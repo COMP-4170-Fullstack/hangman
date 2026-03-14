@@ -111,6 +111,11 @@ html {
     color: var(--purple);
 }
 
+.nav-link.active {
+    color: var(--purple);
+    text-decoration: none;
+}
+
 /* EDIT THIS LATER*/
 .nav-link.logout {
     color: var(--voxel-red);

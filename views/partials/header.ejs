@@ -16,10 +16,11 @@
         <image class="logo-icon" src="/smile.svg" alt="Pixel Icon"/>
         PIXEL HANGMAN
       </a>
+      <% const currentPage = typeof activePage !== 'undefined' ? activePage : '' %>
       <div class="navbar-links">
-        <a href="/scoreboard" class="nav-link">Scoreboard</a>
+        <a href="/scoreboard" class="nav-link <%= currentPage === 'scoreboard' ? 'active' : '' %>">Scoreboard</a>
         <% if (user) { %>
-          <a href="/game" class="nav-link">Play</a>
+          <a href="/game" class="nav-link <%= currentPage === 'game' ? 'active' : '' %>">Play</a>
           <a href="/auth/logout" class="nav-link logout">Logout</a>
         <% } else { %>
           <a href="/auth" class="nav-link btn-primary">Login</a>
