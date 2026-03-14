@@ -175,13 +175,13 @@ function showModal(won, points) {
   modal.classList.add(won ? 'win' : 'lose');
   
   if (won) {
-    modalIcon.textContent = '🎉';
+    modalIcon.innerHTML = '<img src="/smile.svg" alt="" class="modal-icon-img" aria-hidden="true">';
     modalTitle.textContent = 'YOU WON!';
     modalMessage.textContent = streak > 1 ? `${streak} wins in a row!` : 'Congratulations!';
     modalScoreLabel.textContent = 'Points earned:';
     modalScoreValue.textContent = `+${points}`;
   } else {
-    modalIcon.textContent = '💀';
+    modalIcon.innerHTML = '<img src="/skull.svg" alt="" class="modal-icon-img" aria-hidden="true">';
     modalTitle.textContent = 'GAME OVER';
     modalMessage.textContent = 'Try again!';
     modalScoreLabel.textContent = 'Current score:';

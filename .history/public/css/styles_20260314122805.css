@@ -591,27 +591,33 @@ html {
 }
 
 .body-part.left-arm {
-    top: 105px;
-    left: 28%;
-    width: 45px;
+    top: 95px;
+    left: 5px;
+    width: 55px;
+    height: 55px;
 }
 
 .body-part.right-arm {
-    top: 105px;
-    left: 46%;
-    width: 45px;
+    top: 95px;
+    right: 55px;
+    left: auto;
+    width: 55px;
+    height: 55px;
 }
 
 .body-part.left-leg {
     top: 165px;
-    left: 36%;
-    width: 20px;
+    left: 72px;
+    width: 35px;
+    height: 65px;
 }
 
 .body-part.right-leg {
     top: 165px;
-    left: 44%;
-    width: 20px;
+    right: 72px;
+    left: auto;
+    width: 35px;
+    height: 65px;
 }
 
 /*  ------ WORD SECTION ------ */
@@ -623,10 +629,11 @@ html {
 }
 
 .hint-text {
-    font-size: var(--font-size-small);
-    color: var(--lilac);
+    font-family: var(--font-pixel);
+    font-size: 0.5rem;
+    color: var(--text-muted);
     margin-bottom: 1rem;
-    text-align: left;
+    text-align: center;
 }
 
 .word-display {
@@ -640,22 +647,25 @@ html {
 .letter-box {
     width: 40px;
     height: 50px;
-    background: var(--lilac);
-    border: 3px solid var(--purple);
+    background: var(--bg-card);
+    border: 3px solid var(--voxel-cyan);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--font-size-small);
-    color: var(--twhite);
+    font-family: var(--font-pixel);
+    font-size: 1rem;
+    color: var(--text-primary);
+    box-shadow: 0 4px 0 rgba(0, 212, 170, 0.3);
 }
 
 .letter-box.revealed {
-    background: var(---lilac);
-    color: var(--purple);
+    background: var(--voxel-cyan);
+    color: var(--bg-dark);
 }
 
 .game-status {
-    font-size: var(--font-size-small);
+    font-family: var(--font-pixel);
+    font-size: 0.6rem;
     text-align: center;
     min-height: 1.5rem;
 }
@@ -677,22 +687,25 @@ html {
 .key {
     width: 40px;
     height: 45px;
-    background: var(--light-lilac);
-    border: 3px solid var(--lilac);
-    color: var(--lilac);
-    font-size: var(--font-size-small);
+    background: var(--bg-card);
+    border: 2px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
     cursor: pointer;
     transition: all 0.2s;
+    box-shadow: 0 3px 0 rgba(0, 0, 0, 0.3);
 }
 
 .key:hover:not(:disabled) {
-    background: var(--purple);
-    color: var(--white);
-    border-color: var(--lilac);
+    background: var(--voxel-cyan);
+    color: var(--bg-dark);
+    border-color: var(--voxel-cyan);
 }
 
 .key:active:not(:disabled) {
     transform: translateY(2px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
 }
 
 .key:disabled {
@@ -700,22 +713,23 @@ html {
 }
 
 .key.correct {
-    background: var(--white);
-    border-color: var(--purple);
-    color: var(--purple);
+    background: var(--voxel-green);
+    border-color: var(--voxel-green);
+    color: var(--bg-dark);
 }
 
 .key.wrong {
-    background: var(--red);
-    border-color: var(--dark-red);
-    color: var(--white);
+    background: var(--voxel-red);
+    border-color: var(--voxel-red);
+    color: var(--text-primary);
+    opacity: 0.6;
 }
 
 .game-actions {
     text-align: center;
 }
 
-/*  ------ GAME OVER ------ */
+/*  ------ MODAL ------ */
 .modal {
     position: fixed;
     top: 0;
@@ -734,9 +748,9 @@ html {
 }
 
 .modal-content {
-    background: var(--red);
+    background: var(--bg-card);
     padding: 2.5rem;
-    border: 3px solid var(--dark-red);
+    border: 3px solid var(--voxel-cyan);
     max-width: 400px;
     text-align: center;
 }
@@ -746,27 +760,28 @@ html {
     margin-bottom: 1rem;
 }
 
-.modal-icon-img {
-    width: 150px;
-    object-fit: contain;
-}
-
 .modal-title {
-    font-size: var(--font-size-regular);
+    font-family: var(--font-pixel);
+    font-size: 1rem;
     margin-bottom: 0.75rem;
-    color: var(--white);
 }
 
 .modal-message {
-    color: var(--white);
+    color: var(--text-muted);
     margin-bottom: 1rem;
 }
 
 .modal-word {
-    background: var(--white);
+    background: var(--bg-dark);
     padding: 0.75rem;
     margin-bottom: 1rem;
-    font-size: var(--font-size-small);
+    font-size: 0.9rem;
+}
+
+.modal-word strong {
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
+    color: var(--voxel-cyan);
 }
 
 .modal-score {
@@ -778,29 +793,24 @@ html {
 }
 
 #modal-score-label {
-    font-size: var(--font-size-small);
-    color: var(--white);
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 #modal-score-value {
-    font-size: var(--font-size-small);
-    color: var(--white);
+    font-family: var(--font-pixel);
+    font-size: 1.2rem;
+    color: var(--voxel-yellow);
 }
 
+.modal.win .modal-title {
+    color: var(--voxel-green);
+}
 .modal.win .modal-content {
-    background: var(--light-lilac);
-    border-color: var(--lilac);
-}
-
-.modal.win .modal-title,
-.modal.win .modal-message,
-.modal.win .modal-word,
-.modal.win #modal-score-label,
-.modal.win #modal-score-value {
-    color: var(--lilac);
+    border-color: var(--voxel-green);
 }
 .modal.lose .modal-title {
-    color: var(--white);
+    color: var(--voxel-red);
 }
 .modal.lose .modal-content {
     border-color: var(--voxel-red);

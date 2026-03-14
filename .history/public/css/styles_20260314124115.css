@@ -722,7 +722,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.8);
+    background: transparent;
     display: none;
     align-items: center;
     justify-content: center;
@@ -746,15 +746,9 @@ html {
     margin-bottom: 1rem;
 }
 
-.modal-icon-img {
-    width: 150px;
-    object-fit: contain;
-}
-
 .modal-title {
     font-size: var(--font-size-regular);
     margin-bottom: 0.75rem;
-    color: var(--white);
 }
 
 .modal-message {
@@ -783,24 +777,19 @@ html {
 }
 
 #modal-score-value {
-    font-size: var(--font-size-small);
-    color: var(--white);
+    font-family: var(--font-pixel);
+    font-size: 1.2rem;
+    color: var(--voxel-yellow);
 }
 
+.modal.win .modal-title {
+    color: var(--voxel-green);
+}
 .modal.win .modal-content {
-    background: var(--light-lilac);
-    border-color: var(--lilac);
-}
-
-.modal.win .modal-title,
-.modal.win .modal-message,
-.modal.win .modal-word,
-.modal.win #modal-score-label,
-.modal.win #modal-score-value {
-    color: var(--lilac);
+    border-color: var(--voxel-green);
 }
 .modal.lose .modal-title {
-    color: var(--white);
+    color: var(--voxel-red);
 }
 .modal.lose .modal-content {
     border-color: var(--voxel-red);

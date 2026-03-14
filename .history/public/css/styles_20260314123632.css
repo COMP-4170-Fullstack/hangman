@@ -645,7 +645,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--font-size-small);
+    font-size: 1rem;
     color: var(--twhite);
 }
 
@@ -680,19 +680,20 @@ html {
     background: var(--light-lilac);
     border: 3px solid var(--lilac);
     color: var(--lilac);
-    font-size: var(--font-size-small);
+    font-size: 0.7rem;
     cursor: pointer;
     transition: all 0.2s;
 }
 
 .key:hover:not(:disabled) {
-    background: var(--purple);
-    color: var(--white);
-    border-color: var(--lilac);
+    background: var(--voxel-cyan);
+    color: var(--bg-dark);
+    border-color: var(--voxel-cyan);
 }
 
 .key:active:not(:disabled) {
     transform: translateY(2px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
 }
 
 .key:disabled {
@@ -700,22 +701,23 @@ html {
 }
 
 .key.correct {
-    background: var(--white);
-    border-color: var(--purple);
-    color: var(--purple);
+    background: var(--voxel-green);
+    border-color: var(--voxel-green);
+    color: var(--bg-dark);
 }
 
 .key.wrong {
-    background: var(--red);
-    border-color: var(--dark-red);
-    color: var(--white);
+    background: var(--voxel-red);
+    border-color: var(--voxel-red);
+    color: var(--text-primary);
+    opacity: 0.6;
 }
 
 .game-actions {
     text-align: center;
 }
 
-/*  ------ GAME OVER ------ */
+/*  ------ MODAL ------ */
 .modal {
     position: fixed;
     top: 0;
@@ -734,9 +736,9 @@ html {
 }
 
 .modal-content {
-    background: var(--red);
+    background: var(--bg-card);
     padding: 2.5rem;
-    border: 3px solid var(--dark-red);
+    border: 3px solid var(--voxel-cyan);
     max-width: 400px;
     text-align: center;
 }
@@ -746,27 +748,28 @@ html {
     margin-bottom: 1rem;
 }
 
-.modal-icon-img {
-    width: 150px;
-    object-fit: contain;
-}
-
 .modal-title {
-    font-size: var(--font-size-regular);
+    font-family: var(--font-pixel);
+    font-size: 1rem;
     margin-bottom: 0.75rem;
-    color: var(--white);
 }
 
 .modal-message {
-    color: var(--white);
+    color: var(--text-muted);
     margin-bottom: 1rem;
 }
 
 .modal-word {
-    background: var(--white);
+    background: var(--bg-dark);
     padding: 0.75rem;
     margin-bottom: 1rem;
-    font-size: var(--font-size-small);
+    font-size: 0.9rem;
+}
+
+.modal-word strong {
+    font-family: var(--font-pixel);
+    font-size: 0.7rem;
+    color: var(--voxel-cyan);
 }
 
 .modal-score {
@@ -778,29 +781,24 @@ html {
 }
 
 #modal-score-label {
-    font-size: var(--font-size-small);
-    color: var(--white);
+    font-size: 0.85rem;
+    color: var(--text-muted);
 }
 
 #modal-score-value {
-    font-size: var(--font-size-small);
-    color: var(--white);
+    font-family: var(--font-pixel);
+    font-size: 1.2rem;
+    color: var(--voxel-yellow);
 }
 
+.modal.win .modal-title {
+    color: var(--voxel-green);
+}
 .modal.win .modal-content {
-    background: var(--light-lilac);
-    border-color: var(--lilac);
-}
-
-.modal.win .modal-title,
-.modal.win .modal-message,
-.modal.win .modal-word,
-.modal.win #modal-score-label,
-.modal.win #modal-score-value {
-    color: var(--lilac);
+    border-color: var(--voxel-green);
 }
 .modal.lose .modal-title {
-    color: var(--white);
+    color: var(--voxel-red);
 }
 .modal.lose .modal-content {
     border-color: var(--voxel-red);

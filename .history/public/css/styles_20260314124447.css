@@ -753,7 +753,7 @@ html {
 
 .modal-title {
     font-size: var(--font-size-regular);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: var(--white);
 }
 
@@ -787,17 +787,11 @@ html {
     color: var(--white);
 }
 
-.modal.win .modal-content {
-    background: var(--light-lilac);
-    border-color: var(--lilac);
-}
-
-.modal.win .modal-title,
-.modal.win .modal-message,
-.modal.win .modal-word,
-.modal.win #modal-score-label,
-.modal.win #modal-score-value {
+.modal.win .modal-title {
     color: var(--lilac);
+}
+.modal.win .modal-content {
+    border-color: var(--lilac);
 }
 .modal.lose .modal-title {
     color: var(--white);
