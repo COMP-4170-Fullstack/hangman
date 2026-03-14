@@ -1,25 +1,27 @@
 <%- include('partials/header', { title: 'Home', user: user }) %>
 
 <div class="hero">
-  <div class="voxel-decorations">
-    <div class="voxel-diamond voxel-cyan"></div>
-    <div class="voxel-diamond voxel-magenta"></div>
-    <div class="voxel-diamond voxel-yellow"></div>
+  <div class="pixel-decorations">
+    <div class="pixel lilac"></div>
+    <div class="pixel purple"></div>
+    <div class=" pixel light-lilac"></div>
   </div>
   
+  <!-- ADD LOGO HERE -->
   <h1 class="hero-title">PIXEL HANGMAN</h1>
   <p class="hero-subtitle">Test your knowledge in Design, Frontend & Marketing</p>
   
   <div class="hero-buttons">
     <% if (user) { %>
-      <a href="/game" class="btn btn-primary btn-large">PLAY NOW</a>
+      <a href="/game" class="button-primary">PLAY NOW</a>
     <% } else { %>
-      <a href="/auth" class="btn btn-primary btn-large">GET STARTED</a>
+      <a href="/auth" class="button-primary">GET STARTED</a>
     <% } %>
-    <a href="/scoreboard" class="btn btn-secondary btn-large">VIEW RANKING</a>
+    <a href="/scoreboard" class="button-primary">VIEW RANKING</a>
   </div>
 </div>
 
+ <!-- REMOVE THIS? -->
 <section class="features">
   <h2 class="section-title">HOW TO PLAY</h2>
   <div class="features-grid">
@@ -41,6 +43,7 @@
   </div>
 </section>
 
+<!-- REMOVE THIS? -->
 <% if (topPlayers && topPlayers.length > 0) { %>
 <section class="top-players">
   <h2 class="section-title">TOP PLAYERS</h2>
@@ -58,6 +61,8 @@
 </section>
 <% } %>
 
+
+<!-- REMOVE THIS? -->
 <section class="categories">
   <h2 class="section-title">CATEGORIES</h2>
   <div class="categories-grid">

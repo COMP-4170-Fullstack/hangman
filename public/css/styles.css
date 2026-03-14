@@ -10,6 +10,10 @@
     text-transform: var(--text-all-caps);
 }
 
+html {
+    background-color: var(--white);
+}
+
 :root {
     /* Color palette */
     --light-lilac: #c6caff;
@@ -51,7 +55,7 @@
     --font-sans: "Inter", sans-serif;
 }
 
-/* Navbar */
+/*  -------------------------------------------------- HEADER -------------------------------------------------- */
 .navbar {
     background: var(--light-lilac);
     border-bottom: 5px solid var(--lilac);
@@ -100,7 +104,6 @@
     color: var(--lilac);
     font-size: var(--font-size-regular);
     text-decoration: none;
-    text-transform: var(--text-all-caps);
     transition: color 0.2s;
 }
 
@@ -108,11 +111,12 @@
     color: var(--purple);
 }
 
+/* EDIT THIS LATER*/
 .nav-link.logout {
     color: var(--voxel-red);
 }
 
-/* Main Content */
+/*  -------------------------------------------------- MAIN CONTENT -------------------------------------------------- */
 .main-content {
     flex: 1;
     padding: 2rem 1rem;
@@ -121,63 +125,35 @@
     width: 100%;
 }
 
-/* Buttons */
-.btn {
-    font-family: var(--font-pixel);
-    font-size: 0.6rem;
+/*  -------------------------------------------------- BUTTONS -------------------------------------------------- */
+.button-primary {
+    font-family: var(--font-jersey);
+    font-size: var(--font-size-regular);
     padding: 1rem 1.5rem;
     border: none;
     cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
     text-decoration: none;
     display: inline-block;
     text-align: center;
     transition: all 0.2s;
-    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+    background-color: var(--purple);
+    color: var(--white);
 }
 
-.btn:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+.button-primary:hover {
+    background-color: var(--lilac);
 }
 
-.btn-primary {
-    background: var(--voxel-cyan);
-    color: var(--bg-dark);
-}
-
-.btn-primary:hover {
-    background: #00e6b8;
-}
-
-.btn-secondary {
-    background: var(--bg-card);
-    color: var(--text-primary);
-    border: 2px solid var(--voxel-cyan);
-}
-
-.btn-secondary:hover {
-    background: var(--border-color);
-}
-
-.btn-large {
-    padding: 1.25rem 2rem;
-    font-size: 0.7rem;
-}
-
-.btn-full {
-    width: 100%;
-}
-
-/* Hero Section */
+/*  -------------------------------------------------- HOME PAGE-------------------------------------------------- */
 .hero {
     text-align: center;
     padding: 4rem 1rem;
     position: relative;
 }
 
-.voxel-decorations {
+/*  ------ PIXELS ------ */
+
+.pixel-decorations {
     position: absolute;
     top: 0;
     left: 0;
@@ -187,7 +163,7 @@
     overflow: hidden;
 }
 
-.voxel-diamond {
+.pixel {
     position: absolute;
     width: 20px;
     height: 20px;
@@ -195,22 +171,22 @@
     animation: float 3s ease-in-out infinite;
 }
 
-.voxel-diamond.voxel-cyan {
-    background: var(--voxel-cyan);
+.pixel.lilac {
+    background: var(--lilac);
     top: 20%;
     left: 10%;
     animation-delay: 0s;
 }
 
-.voxel-diamond.voxel-magenta {
-    background: var(--voxel-magenta);
+.pixel.purple {
+    background: var(--purple);
     top: 30%;
     right: 15%;
     animation-delay: 1s;
 }
 
-.voxel-diamond.voxel-yellow {
-    background: var(--voxel-yellow);
+.pixel.light-lilac {
+    background: var(--light-lilac);
     bottom: 20%;
     left: 20%;
     animation-delay: 2s;
@@ -226,24 +202,17 @@
     }
 }
 
+/*  ------ HERO SECTION ------ */
 .hero-title {
-    font-family: var(--font-pixel);
-    font-size: 2rem;
+    font-family: var(--font-jersey);
+    font-size: var(--font-size-extra-large);
+    color: var(--lilac);
     margin-bottom: 1rem;
-    background: linear-gradient(
-        135deg,
-        var(--voxel-cyan),
-        var(--voxel-magenta)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 .hero-subtitle {
-    font-size: 1.1rem;
-    color: var(--text-muted);
+    font-size: var(--font-size-small);
+    color: var(--light-lilac);
     margin-bottom: 2rem;
 }
 
@@ -254,17 +223,17 @@
     flex-wrap: wrap;
 }
 
-/* Features */
+/*  ------ HOW TO PLAY ------ */
 .features {
     padding: 3rem 0;
 }
 
 .section-title {
-    font-family: var(--font-pixel);
-    font-size: 1rem;
+    font-family: var(--font-jerseY);
+    font-size: var(--font-size-medium);
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--voxel-cyan);
+    color: var(--lilac);
 }
 
 .features-grid {
@@ -274,9 +243,9 @@
 }
 
 .feature-card {
-    background: var(--bg-card);
+    background: var(--light-lilac);
     padding: 2rem;
-    border: 2px solid var(--border-color);
+    border: 3px solid var(--lilac);
     text-align: center;
 }
 
@@ -287,34 +256,25 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto 1rem;
-    font-family: var(--font-pixel);
-    font-size: 1.2rem;
-    color: var(--bg-dark);
-}
-
-.feature-icon.voxel-cyan {
-    background: var(--voxel-cyan);
-}
-.feature-icon.voxel-magenta {
-    background: var(--voxel-magenta);
-}
-.feature-icon.voxel-yellow {
-    background: var(--voxel-yellow);
+    font-family: var(--font-jersey);
+    font-size: var(--font-size-regular);
+    color: var(--white);
+    background: var(--purple);
 }
 
 .feature-card h3 {
     font-family: var(--font-pixel);
     font-size: 0.7rem;
     margin-bottom: 0.75rem;
+    color: var(--purple);
 }
 
 .feature-card p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    line-height: 1.5;
+    color: var(--lilac);
+    font-size: var(--font-size-small);
 }
 
-/* Top Players */
+/*  ------ TOP PLAYERS ------ */
 .top-players {
     padding: 3rem 0;
 }
@@ -327,23 +287,17 @@
 }
 
 .top-player-card {
-    background: var(--bg-card);
+    background: var(--purple);
     padding: 1.5rem 2rem;
-    border: 2px solid var(--border-color);
+    border: 2px solid var(--lilac);
     display: flex;
     align-items: center;
     gap: 1rem;
     min-width: 200px;
 }
 
-.top-player-card.rank-1 {
-    border-color: var(--voxel-yellow);
-}
-.top-player-card.rank-2 {
-    border-color: #c0c0c0;
-}
-.top-player-card.rank-3 {
-    border-color: #cd7f32;
+.top-player-card {
+    border-color: var(--lilac);
 }
 
 .rank-badge {
@@ -352,20 +306,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-pixel);
+    font-family: var(--font-jersey);
     font-size: 1rem;
-    background: var(--voxel-cyan);
-    color: var(--bg-dark);
-}
-
-.rank-1 .rank-badge {
-    background: var(--voxel-yellow);
-}
-.rank-2 .rank-badge {
-    background: #c0c0c0;
-}
-.rank-3 .rank-badge {
-    background: #cd7f32;
+    background: var(--lilac);
+    color: var(--white);
 }
 
 .player-info {
@@ -375,16 +319,16 @@
 }
 
 .player-name {
-    font-weight: 600;
+    font-size: var(--font-size-small);
+    color: var(--white);
 }
 
 .player-score {
-    font-family: var(--font-pixel);
-    font-size: 0.6rem;
-    color: var(--voxel-cyan);
+    font-size: var(--font-size-small);
+    color: var(--light-lilac);
 }
 
-/* Categories */
+/*  ------ CATEGORIES ------ */
 .categories {
     padding: 3rem 0;
 }
@@ -396,34 +340,31 @@
 }
 
 .category-card {
-    background: var(--bg-card);
+    background: var(--light-lilac);
     padding: 2rem;
-    border: 2px solid var(--border-color);
+    border: 3px solid var(--lilac);
     text-align: center;
     transition: border-color 0.2s;
 }
 
-.category-card:hover {
-    border-color: var(--voxel-cyan);
-}
-
 .category-icon {
-    font-size: 2.5rem;
+    font-size: var(--font-size-medium);
     margin-bottom: 1rem;
 }
 
 .category-card h3 {
-    font-family: var(--font-pixel);
-    font-size: 0.7rem;
+    font-family: var(--font-jersey);
+    font-size: var(--font-size-regular);
     margin-bottom: 0.5rem;
+    color: var(--purple);
 }
 
 .category-card p {
-    color: var(--text-muted);
-    font-size: 0.85rem;
+    color: var(--lilac);
 }
 
-/* Auth Page */
+/*  -------------------------------------------------- LOGIN / SIGN IN PAGE -------------------------------------------------- */
+
 .auth-container {
     max-width: 400px;
     margin: 2rem auto;
@@ -504,7 +445,7 @@
     font-size: 0.85rem;
 }
 
-/* Success Page */
+/*  -------------------------------------------------- SUCCESS PAGE -------------------------------------------------- */
 .success-container {
     max-width: 500px;
     margin: 3rem auto;
@@ -541,7 +482,8 @@
     margin-bottom: 2rem;
 }
 
-/* Game Page */
+/*  -------------------------------------------------- GAME PAGE -------------------------------------------------- */
+
 .game-container {
     max-width: 800px;
     margin: 0 auto;
@@ -918,7 +860,7 @@
     border-color: var(--voxel-red);
 }
 
-/* Scoreboard Page */
+/*  -------------------------------------------------- SCOREBOARD PAGE -------------------------------------------------- */
 .scoreboard-container {
     max-width: 700px;
     margin: 0 auto;
@@ -1018,16 +960,18 @@
     font-size: 0.85rem;
 }
 
-/* Footer */
+/*  -------------------------------------------------- FOOTER -------------------------------------------------- */
+
 .footer {
     padding: 1.5rem;
     text-align: center;
-    border-top: 2px solid var(--border-color);
-    color: var(--text-muted);
+    border-top: 5px solid var(--light-lilac);
+    color: var(--lilac);
     font-size: 0.85rem;
 }
 
-/* Responsive */
+/*  -------------------------------------------------- RESPONSIVE -------------------------------------------------- */
+
 @media (max-width: 768px) {
     .hero-title {
         font-size: 1.3rem;
