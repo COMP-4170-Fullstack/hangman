@@ -828,7 +828,7 @@ body {
     font-size: var(--font-size-medium);
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--purple);
+    color: var(--white);
 }
 
 .scoreboard-card {
@@ -884,15 +884,9 @@ body {
     object-fit: contain;
 }
 
-.scoreboard-header .col-rank,
-.scoreboard-header .col-player,
-.scoreboard-header .col-score,
-.scoreboard-header .col-games {
-    color: var(--white);
-}
-
 .scoreboard-header .col-player {
     font-weight: 500;
+    color: var(--white);
 }
 
 .scoreboard-row .col-player {
