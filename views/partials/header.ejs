@@ -23,7 +23,7 @@
           <a href="/game" class="nav-link <%= currentPage === 'game' ? 'active' : '' %>">Play</a>
           <a href="/auth/logout" class="nav-link logout">Logout</a>
         <% } else { %>
-          <a href="/auth" class="nav-link btn-primary">Login</a>
+          <a href="/auth" class="nav-link btn-primary <%= currentPage === 'auth' ? 'active' : '' %>">Login</a>
         <% } %>
       </div>
     </div>
