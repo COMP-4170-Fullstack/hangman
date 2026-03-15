@@ -827,7 +827,7 @@ body {
     font-size: var(--font-size-medium);
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--white);
+    color: var(--purple);
 }
 
 .scoreboard-card {
@@ -849,8 +849,9 @@ body {
     display: grid;
     grid-template-columns: 60px 1fr 100px 80px;
     padding: 1rem;
-    border-bottom: 3px solid var(--lilac);
+    border-bottom: 2px solid var(--lilac);
     align-items: center;
+    color: var(--white);
 }
 
 .scoreboard-row:last-child {
@@ -877,26 +878,20 @@ body {
     text-align: center;
 }
 
-.scoreboard-header .col-player {
+.col-player {
     font-weight: 500;
-    color: var(--white);
-}
-
-.scoreboard-row .col-player {
-    font-weight: 500;
-    color: var(--purple);
 }
 
 .col-score {
     font-family: var(--font-jersey);
     font-size: var(--font-size-small);
-    color: var(--white);
+    color: var(--lilac);
     text-align: right;
 }
 
 .col-games {
     text-align: right;
-    color: var(--white);
+    color: var(--lilac);
     font-size: var(--font-size-small);
 }
 

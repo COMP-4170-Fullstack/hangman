@@ -827,7 +827,7 @@ body {
     font-size: var(--font-size-medium);
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--white);
+    color: var(--purple);
 }
 
 .scoreboard-card {
@@ -849,7 +849,7 @@ body {
     display: grid;
     grid-template-columns: 60px 1fr 100px 80px;
     padding: 1rem;
-    border-bottom: 3px solid var(--lilac);
+    border-bottom: 2px solid var(--white);
     align-items: center;
 }
 
@@ -858,17 +858,17 @@ body {
 }
 
 .scoreboard-row.current-user {
-    background: var(--light-lilac);
+    background: var(--lilac);
 }
 
 .scoreboard-row.rank-1 {
-    background: var(--light-lilac);
+    background: rgba(255, 217, 61, 0.1);
 }
 .scoreboard-row.rank-2 {
-    background: var(--white);
+    background: rgba(192, 192, 192, 0.1);
 }
 .scoreboard-row.rank-3 {
-    background: var(--white);
+    background: rgba(205, 127, 50, 0.1);
 }
 
 .col-rank {
@@ -877,26 +877,20 @@ body {
     text-align: center;
 }
 
-.scoreboard-header .col-player {
+.col-player {
     font-weight: 500;
-    color: var(--white);
-}
-
-.scoreboard-row .col-player {
-    font-weight: 500;
-    color: var(--purple);
 }
 
 .col-score {
     font-family: var(--font-jersey);
     font-size: var(--font-size-small);
-    color: var(--white);
+    color: var(--lilac);
     text-align: right;
 }
 
 .col-games {
     text-align: right;
-    color: var(--white);
+    color: var(--grey);
     font-size: var(--font-size-small);
 }
 
@@ -917,7 +911,7 @@ body {
 .scoreboard-legend {
     text-align: center;
     padding: 1rem;
-    color: var(--light-lilac);
+    color: var(--grey);
     font-size: var(--font-size-small);
 }
 

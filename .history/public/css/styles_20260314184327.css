@@ -849,7 +849,7 @@ body {
     display: grid;
     grid-template-columns: 60px 1fr 100px 80px;
     padding: 1rem;
-    border-bottom: 3px solid var(--lilac);
+    border-bottom: 2px solid var(--lilac);
     align-items: center;
 }
 
@@ -877,12 +877,7 @@ body {
     text-align: center;
 }
 
-.scoreboard-header .col-player {
-    font-weight: 500;
-    color: var(--white);
-}
-
-.scoreboard-row .col-player {
+.col-player {
     font-weight: 500;
     color: var(--purple);
 }
