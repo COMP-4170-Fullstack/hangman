@@ -44,23 +44,6 @@ body {
     --letter-spacing: 2px;
 
     --text-all-caps: uppercase;
-
-    /* DELETE this later */
-    --bg-dark: #1a1a2e;
-    --bg-card: #252542;
-    --text-primary: #f5f5f5;
-    --text-muted: #a0a0a0;
-    --voxel-cyan: #00d4aa;
-    --voxel-magenta: #ff6b9d;
-    --voxel-yellow: #ffd93d;
-    --voxel-orange: #ff8c42;
-    --voxel-red: #ff4757;
-    --voxel-green: #2ed573;
-    --voxel-blue: #5352ed;
-    --voxel-purple: #a55eea;
-    --border-color: #3d3d5c;
-    --font-pixel: "Press Start 2P", cursive;
-    --font-sans: "Inter", sans-serif;
 }
 
 /*  -------------------------------------------------- HEADER -------------------------------------------------- */
@@ -302,10 +285,6 @@ body {
     align-items: center;
     gap: 1rem;
     min-width: 200px;
-}
-
-.top-player-card {
-    border-color: var(--lilac);
 }
 
 .rank-badge {
@@ -811,9 +790,7 @@ body {
 .modal.win #modal-score-value {
     color: var(--lilac);
 }
-.modal.lose .modal-title {
-    color: var(--white);
-}
+
 .modal.lose .modal-content {
     border-color: var(--dark-red);
 }
