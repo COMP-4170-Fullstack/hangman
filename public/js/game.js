@@ -3,6 +3,7 @@
 const MAX_ERRORS = 6;
 const WIN_POINTS = 100;
 const STREAK_BONUS = 25;
+const MAX_WORD_REFRESHES = 5;
 
 let currentWord = '';
 let currentWordId = null;
@@ -11,6 +12,8 @@ let currentCategory = '';
 let guessedLetters = [];
 let errors = 0;
 let streak = 0;
+let wordRefreshCount = 0;
+let shouldResetHangman = true;
 let score = window.GAME_CONFIG.initialScore;
 let gameOver = false;
 
@@ -23,13 +26,21 @@ const gameStatus = document.getElementById('game-status');
 const currentScoreEl = document.getElementById('current-score');
 const newGameBtn = document.getElementById('new-game-btn');
 const modal = document.getElementById('game-modal');
-const modalIcon = document.getElementById('modal-icon');
-const modalTitle = document.getElementById('modal-title');
-const modalMessage = document.getElementById('modal-message');
-const modalWord = document.getElementById('modal-word');
-const modalScoreLabel = document.getElementById('modal-score-label');
-const modalScoreValue = document.getElementById('modal-score-value');
-const modalPlayAgain = document.getElementById('modal-play-again');
+const modalWinMessage = document.getElementById('modal-win-message');
+const modalWinWord = document.getElementById('modal-win-word');
+const modalWinScoreValue = document.getElementById('modal-win-score-value');
+const modalLoseWord = document.getElementById('modal-lose-word');
+const modalLoseScoreValue = document.getElementById('modal-lose-score-value');
+const modalWinContinueBtn = document.getElementById('modal-win-continue');
+const modalLosePlayAgainBtn = document.getElementById('modal-lose-play-again');
+
+function updateNewWordButtonState() {
+  const refreshesLeft = Math.max(0, MAX_WORD_REFRESHES - wordRefreshCount);
+  const refreshLimitReached = !gameOver && wordRefreshCount >= MAX_WORD_REFRESHES;
+
+  newGameBtn.disabled = refreshLimitReached;
+  newGameBtn.textContent = refreshLimitReached ? 'ANSWER TO CONTINUE' : `NEW WORD (${refreshesLeft})`;
+}
 
 // Initialize keyboard
 function initKeyboard() {
@@ -68,7 +79,6 @@ async function startNewGame() {
   currentHint = wordData.hint || '';
   currentCategory = wordData.category || 'DESIGN';
   guessedLetters = [];
-  errors = 0;
   gameOver = false;
   
   // Reset UI
@@ -82,10 +92,14 @@ async function startNewGame() {
     key.classList.remove('correct', 'wrong');
   });
   
-  // Reset hangman
-  document.querySelectorAll('.body-part').forEach(part => {
-    part.classList.remove('visible');
-  });
+  if (shouldResetHangman) {
+    errors = 0;
+    // Full reset only after game over (or first load)
+    document.querySelectorAll('.body-part').forEach(part => {
+      part.classList.remove('visible');
+    });
+    shouldResetHangman = false;
+  }
   
   // Update word display
   updateWordDisplay();
@@ -160,6 +174,8 @@ function checkLose() {
   if (errors >= MAX_ERRORS) {
     gameOver = true;
     streak = 0;
+    // Next round starts fresh after full hangman is collected.
+    shouldResetHangman = true;
     
     // Update server
     updateScore(score, false, currentWordId, 0);
@@ -173,24 +189,18 @@ function checkLose() {
 function showModal(won, points) {
   modal.classList.add('visible');
   modal.classList.add(won ? 'win' : 'lose');
+  // Player completed the round; refresh allowance resets for next word.
+  wordRefreshCount = 0;
+  updateNewWordButtonState();
   
   if (won) {
-    modalIcon.innerHTML = '<img src="/smile.svg" alt="" class="modal-icon-img" aria-hidden="true">';
-    modalTitle.textContent = 'YOU WON!';
-    modalMessage.textContent = streak > 1 ? `${streak} wins in a row!` : 'Congratulations!';
-    modalScoreLabel.textContent = 'Points earned:';
-    modalScoreValue.textContent = `+${points}`;
-    modalPlayAgain.textContent = 'CONTINUE';
+    modalWinMessage.textContent = streak > 1 ? `${streak} wins in a row!` : 'Congratulations!';
+    modalWinWord.textContent = currentWord;
+    modalWinScoreValue.textContent = `+${points}`;
   } else {
-    modalIcon.innerHTML = '<img src="/skull.svg" alt="" class="modal-icon-img" aria-hidden="true">';
-    modalTitle.textContent = 'GAME OVER';
-    modalMessage.textContent = 'Try again!';
-    modalScoreLabel.textContent = 'Current score:';
-    modalScoreValue.textContent = score;
-    modalPlayAgain.textContent = 'PLAY AGAIN';
+    modalLoseWord.textContent = currentWord;
+    modalLoseScoreValue.textContent = score;
   }
-  
-  modalWord.textContent = currentWord;
 }
 
 // Update score on server
@@ -217,9 +227,23 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Event listeners
-newGameBtn.addEventListener('click', startNewGame);
-modalPlayAgain.addEventListener('click', startNewGame);
+newGameBtn.addEventListener('click', () => {
+  if (!gameOver && wordRefreshCount >= MAX_WORD_REFRESHES) {
+    gameStatus.textContent = 'You reached 5 word refreshes. Solve this word to continue.';
+    return;
+  }
+
+  if (!gameOver) {
+    wordRefreshCount++;
+  }
+
+  startNewGame();
+  updateNewWordButtonState();
+});
+modalWinContinueBtn.addEventListener('click', startNewGame);
+modalLosePlayAgainBtn.addEventListener('click', startNewGame);
 
 // Initialize game
 initKeyboard();
+updateNewWordButtonState();
 startNewGame();

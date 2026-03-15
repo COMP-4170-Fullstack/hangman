@@ -213,6 +213,7 @@ app.get('/game', requireAuth, async (req, res) => {
   
   res.render('game', { 
     user: req.user,
+    activePage: 'game',
     profile: profile || { username: 'Player', total_score: 0 }
   })
 })
@@ -261,6 +262,7 @@ app.get('/scoreboard', async (req, res) => {
   
   res.render('scoreboard', { 
     user: req.user,
+    activePage: 'scoreboard',
     players: players || []
   })
 })

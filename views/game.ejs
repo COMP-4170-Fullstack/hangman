@@ -1,4 +1,4 @@
-<%- include('partials/header', { title: 'Play', user: user }) %>
+<%- include('partials/header', { title: 'Play', user: user, activePage: 'game' }) %>
 
 <div class="game-container">
   <div class="game-header">
@@ -46,17 +46,7 @@
 
 <!-- Game Over Modal -->
 <div class="modal" id="game-modal">
-  <div class="modal-content">
-    <div class="modal-icon" id="modal-icon"></div>
-    <h2 class="modal-title" id="modal-title"></h2>
-    <p class="modal-message" id="modal-message"></p>
-    <div class="modal-word">Answer: <strong id="modal-word"></strong></div>
-    <div class="modal-score">
-      <span id="modal-score-label"></span>
-      <span id="modal-score-value"></span>
-    </div>
-    <%- include('partials/button', { label: 'PLAY AGAIN', type: 'button', className: 'button-primary', id: 'modal-play-again' }) %>
-  </div>
+  <%- include('partials/modal') %>
 </div>
 
 <script>
