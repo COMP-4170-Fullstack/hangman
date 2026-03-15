@@ -11,14 +11,7 @@
 }
 
 html {
-    min-height: 100vh;
     background-color: var(--white);
-}
-
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
 :root {
@@ -126,7 +119,7 @@ body {
 /*  -------------------------------------------------- MAIN CONTENT -------------------------------------------------- */
 .main-content {
     flex: 1;
-    padding: 2rem 0;
+    padding: 2rem 1rem;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
@@ -492,7 +485,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    padding: 0;
 }
 
 .game-header {
@@ -500,8 +492,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
-    padding: 0;
-    width: 100%;
+    padding: 1rem;
 }
 
 /*  ------ PLAYER INFO ------ */
@@ -545,14 +536,13 @@ body {
 .hangman-section {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
+    align-items: center;
 }
 
 .category-badge {
     color: var(--lilac);
     font-size: var(--font-size-medium);
-    padding: 0;
+    padding: 0.5rem 1rem;
     margin-bottom: 1rem;
 }
 

@@ -1,0 +1,71 @@
+<%- include('partials/header', { title: 'Play', user: user }) %>
+
+<div class="game-container">
+  <div class="game-header">
+    <div class="player-info-box">
+      <span class="player-label">Player:</span>
+      <span class="player-name" id="player-name"><%= profile.username %></span>
+    </div>
+    <div class="score-box">
+      <span class="score-label">Points:</span>
+      <span class="score-value" id="current-score"><%= profile.total_score %></span>
+    </div>
+  </div>
+  
+  <div class="game-main">
+    <div class="hangman-section">
+      <div class="hangman-box" id="hangman-box">
+        <!-- Gallows (forca) -->
+        <img class="hangman-gallows" src="/hang.svg" alt="" aria-hidden="true">
+        <!-- Body parts (hidden initially, revealed on wrong guess) -->
+        <img class="body-part head" data-part="0" src="/dead.svg" alt="" aria-hidden="true">
+        <img class="body-part body" data-part="1" src="/body.svg" alt="" aria-hidden="true">
+        <img class="body-part left-arm" data-part="2" src="/arm-left.svg" alt="" aria-hidden="true">
+        <img class="body-part right-arm" data-part="3" src="/arm-right.svg" alt="" aria-hidden="true">
+        <img class="body-part left-leg" data-part="4" src="/leg-left.svg" alt="" aria-hidden="true">
+        <img class="body-part right-leg" data-part="5" src="/leg-right.svg" alt="" aria-hidden="true">
+      </div>
+    </div>
+    
+    <div class="word-section">
+      <div class="category-badge" id="category-badge">CATEGORY: DESIGN</div>
+      <div class="hint-text" id="hint-text"></div>
+      <div class="word-display" id="word-display"></div>
+      <div class="game-status" id="game-status"></div>
+    </div>
+  </div>
+  
+  <div class="keyboard-section">
+    <div class="keyboard" id="keyboard"></div>
+  </div>
+  
+  <div class="game-actions">
+    <button class="btn btn-secondary" id="new-game-btn">NEW WORD</button>
+  </div>
+</div>
+
+<!-- Game Over Modal -->
+<div class="modal" id="game-modal">
+  <div class="modal-content">
+    <div class="modal-icon" id="modal-icon"></div>
+    <h2 class="modal-title" id="modal-title"></h2>
+    <p class="modal-message" id="modal-message"></p>
+    <div class="modal-word">The word was: <strong id="modal-word"></strong></div>
+    <div class="modal-score">
+      <span id="modal-score-label"></span>
+      <span id="modal-score-value"></span>
+    </div>
+    <button class="btn btn-primary" id="modal-play-again">PLAY AGAIN</button>
+  </div>
+</div>
+
+<script>
+  window.GAME_CONFIG = {
+    userId: '<%= user.id %>',
+    initialScore: '<%= profile.total_score %>'
+  };
+</script>
+<script src="/js/words.js"></script>
+<script src="/js/game.js"></script>
+
+<%- include('partials/footer') %>
