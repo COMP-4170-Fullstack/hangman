@@ -11,7 +11,14 @@
 }
 
 html {
+    min-height: 100vh;
     background-color: var(--white);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 :root {
@@ -119,7 +126,7 @@ html {
 /*  -------------------------------------------------- MAIN CONTENT -------------------------------------------------- */
 .main-content {
     flex: 1;
-    padding: 2rem 1rem;
+    padding: 2rem 0;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
@@ -482,8 +489,10 @@ html {
 /*  -------------------------------------------------- GAME PAGE -------------------------------------------------- */
 
 .game-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    padding: 0;
 }
 
 .game-header {
@@ -491,7 +500,8 @@ html {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
-    padding: 1rem;
+    padding: 0;
+    width: 100%;
 }
 
 /*  ------ PLAYER INFO ------ */
@@ -535,13 +545,14 @@ html {
 .hangman-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .category-badge {
     color: var(--lilac);
     font-size: var(--font-size-medium);
-    padding: 0.5rem 1rem;
+    padding: 0;
     margin-bottom: 1rem;
 }
 
