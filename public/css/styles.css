@@ -824,34 +824,32 @@ body {
 }
 
 .page-title {
-    font-family: var(--font-pixel);
-    font-size: 1.2rem;
+    font-size: var(--font-size-medium);
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--voxel-cyan);
+    color: var(--white);
 }
 
 .scoreboard-card {
-    background: var(--bg-card);
-    border: 2px solid var(--border-color);
+    background: var(--light-lilac);
+    border: 3px solid var(--lilac);
 }
 
 .scoreboard-header {
     display: grid;
     grid-template-columns: 60px 1fr 100px 80px;
     padding: 1rem;
-    background: var(--bg-dark);
-    font-family: var(--font-pixel);
-    font-size: 0.5rem;
-    color: var(--text-muted);
-    border-bottom: 2px solid var(--border-color);
+    background: var(--purple);
+    font-size: var(--font-size-small);
+    color: var(--white);
+    border-bottom: 3px solid var(--lilac);
 }
 
 .scoreboard-row {
     display: grid;
     grid-template-columns: 60px 1fr 100px 80px;
     padding: 1rem;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 3px solid var(--lilac);
     align-items: center;
 }
 
@@ -860,44 +858,50 @@ body {
 }
 
 .scoreboard-row.current-user {
-    background: rgba(0, 212, 170, 0.1);
+    background: var(--light-lilac);
 }
 
 .scoreboard-row.rank-1 {
-    background: rgba(255, 217, 61, 0.1);
+    background: var(--light-lilac);
 }
 .scoreboard-row.rank-2 {
-    background: rgba(192, 192, 192, 0.1);
+    background: var(--white);
 }
 .scoreboard-row.rank-3 {
-    background: rgba(205, 127, 50, 0.1);
+    background: var(--white);
 }
 
 .col-rank {
-    font-family: var(--font-pixel);
-    font-size: 0.7rem;
+    font-family: var(--font-jersey);
+    font-size: var(--font-size-small);
     text-align: center;
 }
 
-.col-player {
+.scoreboard-header .col-player {
     font-weight: 500;
+    color: var(--white);
+}
+
+.scoreboard-row .col-player {
+    font-weight: 500;
+    color: var(--purple);
 }
 
 .col-score {
-    font-family: var(--font-pixel);
-    font-size: 0.6rem;
-    color: var(--voxel-yellow);
+    font-family: var(--font-jersey);
+    font-size: var(--font-size-small);
+    color: var(--white);
     text-align: right;
 }
 
 .col-games {
     text-align: right;
-    color: var(--text-muted);
-    font-size: 0.9rem;
+    color: var(--white);
+    font-size: var(--font-size-small);
 }
 
 .medal {
-    font-size: 1.2rem;
+    font-size: var(--font-size-medium);
 }
 
 .empty-state {
@@ -907,14 +911,14 @@ body {
 
 .empty-state p {
     margin-bottom: 1rem;
-    color: var(--text-muted);
+    color: var(--grey);
 }
 
 .scoreboard-legend {
     text-align: center;
     padding: 1rem;
-    color: var(--text-muted);
-    font-size: 0.85rem;
+    color: var(--light-lilac);
+    font-size: var(--font-size-small);
 }
 
 /*  -------------------------------------------------- FOOTER -------------------------------------------------- */
@@ -942,6 +946,6 @@ body {
     .scoreboard-header,
     .scoreboard-row {
         grid-template-columns: 50px 1fr 70px 60px;
-        font-size: 0.85rem;
+        font-size: var(--font-size-small);
     }
 }
