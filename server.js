@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 3000
 // Supabase client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
 
 if (!supabaseUrl || !supabaseAnonKey) {
   console.error('ERROR: Configure NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY in the .env file')
@@ -43,22 +44,51 @@ function getSupabaseClient(accessToken = null) {
   return createClient(supabaseUrl, supabaseAnonKey, options)
 }
 
+// Service role client (bypasses RLS) - for profile creation
+function getSupabaseAdmin() {
+  if (!supabaseServiceKey) {
+    console.warn('SUPABASE_SERVICE_ROLE_KEY not set - profile creation may fail with RLS')
+    return null
+  }
+  return createClient(supabaseUrl, supabaseServiceKey)
+}
+
 // Ensure user has a profile (creates one if missing - used instead of DB trigger)
 async function ensureProfile(supabase, user) {
-  const { data: existing } = await supabase
+  const admin = getSupabaseAdmin()
+  const client = admin || supabase
+
+  const { data: existing } = await client
     .from('profiles')
     .select('id')
     .eq('id', user.id)
     .single()
   if (existing) return
+
   const username = user.user_metadata?.username || 'player_' + user.id.slice(0, 8)
-  await supabase.from('profiles').insert({
+  const { error } = await client.from('profiles').insert({
     id: user.id,
     username,
     total_score: 0,
     games_played: 0,
     games_won: 0
   })
+
+  if (error) {
+    if (error.code === '23505') {
+      const fallbackUsername = 'player_' + user.id.replace(/-/g, '').slice(0, 12)
+      const { error: retryError } = await client.from('profiles').insert({
+        id: user.id,
+        username: fallbackUsername,
+        total_score: 0,
+        games_played: 0,
+        games_won: 0
+      })
+      if (retryError) console.error('Profile insert failed:', retryError)
+    } else {
+      console.error('Profile insert failed:', error)
+    }
+  }
 }
 
 // Auth middleware
@@ -148,6 +178,15 @@ app.post('/auth/signup', async (req, res) => {
   
   if (error) {
     return res.render('auth', { error: error.message, mode: 'signup' })
+  }
+  
+  // With email confirmation disabled, Supabase returns a session immediately
+  if (data.session) {
+    res.cookie('sb-access-token', data.session.access_token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', maxAge: 3600000 })
+    res.cookie('sb-refresh-token', data.session.refresh_token, { httpOnly: true, secure: process.env.NODE_ENV === 'production', maxAge: 604800000 })
+    const supabaseWithAuth = getSupabaseClient(data.session.access_token)
+    await ensureProfile(supabaseWithAuth, data.session.user)
+    return res.redirect('/game')
   }
   
   res.render('signup-success', { email })
