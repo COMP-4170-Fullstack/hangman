@@ -120,7 +120,7 @@ body {
 
 /* EDIT THIS LATER*/
 .nav-link.logout {
-    color: var(--voxel-red);
+    color: var(--red);
 }
 
 /*  -------------------------------------------------- MAIN CONTENT -------------------------------------------------- */
@@ -236,7 +236,7 @@ body {
 }
 
 .section-title {
-    font-family: var(--font-jerseY);
+    font-family: var(--font-jersey);
     font-size: var(--font-size-medium);
     text-align: center;
     margin-bottom: 2rem;
@@ -270,8 +270,8 @@ body {
 }
 
 .feature-card h3 {
-    font-family: var(--font-pixel);
-    font-size: 0.7rem;
+    font-family: var(--font-jersey);
+    font-size: var(--font-size-small);
     margin-bottom: 0.75rem;
     color: var(--purple);
 }
@@ -464,7 +464,7 @@ body {
 }
 
 .success-icon {
-    font-size: 3rem;
+    font-size: var(--font-size-large);
     margin-bottom: 1rem;
 }
 
@@ -475,7 +475,7 @@ body {
 }
 
 .success-message {
-    font-size: 1rem;
+    font-size: var(--font-size-regular);
     margin-bottom: 1rem;
     line-height: 1.6;
 }
@@ -657,11 +657,11 @@ body {
     align-items: center;
     justify-content: center;
     font-size: var(--font-size-small);
-    color: var(--twhite);
+    color: var(--white);
 }
 
 .letter-box.revealed {
-    background: var(---lilac);
+    background: var(--lilac);
     color: var(--purple);
 }
 
@@ -753,7 +753,7 @@ body {
 }
 
 .modal-icon {
-    font-size: 3rem;
+    font-size: var(--font-size-large);
     margin-bottom: 1rem;
 }
 
@@ -814,7 +814,7 @@ body {
     color: var(--white);
 }
 .modal.lose .modal-content {
-    border-color: var(--voxel-red);
+    border-color: var(--dark-red);
 }
 
 /*  -------------------------------------------------- SCOREBOARD PAGE -------------------------------------------------- */
@@ -924,14 +924,14 @@ body {
     text-align: center;
     border-top: 3px solid var(--light-lilac);
     color: var(--lilac);
-    font-size: 0.85rem;
+    font-size: var(--font-size-small);
 }
 
 /*  -------------------------------------------------- RESPONSIVE -------------------------------------------------- */
 
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 1.3rem;
+        font-size: var(--font-size-medium);
     }
 
     .navbar-container {
