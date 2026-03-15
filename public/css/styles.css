@@ -23,6 +23,7 @@ body {
 
 :root {
     /* Color palette */
+    --extra-light-lilac: #e8eaff;
     --light-lilac: #c6caff;
     --lilac: #6875ff;
     --purple: #3a29d2;
@@ -827,7 +828,7 @@ body {
     font-size: var(--font-size-medium);
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--white);
+    color: var(--purple);
 }
 
 .scoreboard-card {
@@ -864,11 +865,11 @@ body {
 .scoreboard-row.rank-1 {
     background: var(--light-lilac);
 }
-.scoreboard-row.rank-2 {
-    background: var(--white);
-}
-.scoreboard-row.rank-3 {
-    background: var(--white);
+
+.scoreboard-row.rank-2,
+.scoreboard-row.rank-3,
+.scoreboard-row.rank-normal {
+    background: var(--extra-light-lilac);
 }
 
 .col-rank {
@@ -877,9 +878,21 @@ body {
     text-align: center;
 }
 
+.medal-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.scoreboard-header .col-rank,
+.scoreboard-header .col-player,
+.scoreboard-header .col-score,
+.scoreboard-header .col-games {
+    color: var(--white);
+}
+
 .scoreboard-header .col-player {
     font-weight: 500;
-    color: var(--white);
 }
 
 .scoreboard-row .col-player {
@@ -890,18 +903,14 @@ body {
 .col-score {
     font-family: var(--font-jersey);
     font-size: var(--font-size-small);
-    color: var(--white);
+    color: var(--purple);
     text-align: right;
 }
 
 .col-games {
     text-align: right;
-    color: var(--white);
+    color: var(--purple);
     font-size: var(--font-size-small);
-}
-
-.medal {
-    font-size: var(--font-size-medium);
 }
 
 .empty-state {
