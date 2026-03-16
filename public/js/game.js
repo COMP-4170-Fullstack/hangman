@@ -34,15 +34,18 @@ const modalLoseScoreValue = document.getElementById("modal-lose-score-value");
 const modalWinContinueBtn = document.getElementById("modal-win-continue");
 const modalLosePlayAgainBtn = document.getElementById("modal-lose-play-again");
 
+function canRefreshWord() {
+    return !gameOver && wordRefreshCount < MAX_WORD_REFRESHES;
+}
+
 function updateNewWordButtonState() {
     const refreshesLeft = Math.max(0, MAX_WORD_REFRESHES - wordRefreshCount);
-    const refreshLimitReached =
-        !gameOver && wordRefreshCount >= MAX_WORD_REFRESHES;
+    const refreshAllowed = canRefreshWord();
 
-    newGameBtn.disabled = refreshLimitReached;
-    newGameBtn.textContent = refreshLimitReached
-        ? "ANSWER TO CONTINUE"
-        : `NEW WORD (${refreshesLeft})`;
+    newGameBtn.disabled = !refreshAllowed;
+    newGameBtn.textContent = refreshAllowed
+        ? `NEW WORD (${refreshesLeft})`
+        : "ANSWER TO CONTINUE";
 }
 
 // Initialize keyboard
@@ -250,7 +253,7 @@ document.addEventListener("keydown", (e) => {
 
 // Event listeners
 newGameBtn.addEventListener("click", () => {
-    if (!gameOver && wordRefreshCount >= MAX_WORD_REFRESHES) {
+    if (!canRefreshWord()) {
         gameStatus.textContent =
             "You reached 5 word refreshes. Solve this word to continue.";
         return;
