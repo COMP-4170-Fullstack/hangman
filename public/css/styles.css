@@ -641,8 +641,10 @@ body {
 }
 
 .letter-box.revealed {
-    background: var(--lilac);
+    background: var(--white);
+    border: 3px solid var(--purple);
     color: var(--purple);
+    font-weight: bold;
 }
 
 .game-status {
