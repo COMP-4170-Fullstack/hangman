@@ -11,11 +11,19 @@
 }
 
 html {
+    min-height: 100vh;
     background-color: var(--white);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 :root {
     /* Color palette */
+    --extra-light-lilac: #e8eaff;
     --light-lilac: #c6caff;
     --lilac: #6875ff;
     --purple: #3a29d2;
@@ -36,23 +44,6 @@ html {
     --letter-spacing: 2px;
 
     --text-all-caps: uppercase;
-
-    /* DELETE this later */
-    --bg-dark: #1a1a2e;
-    --bg-card: #252542;
-    --text-primary: #f5f5f5;
-    --text-muted: #a0a0a0;
-    --voxel-cyan: #00d4aa;
-    --voxel-magenta: #ff6b9d;
-    --voxel-yellow: #ffd93d;
-    --voxel-orange: #ff8c42;
-    --voxel-red: #ff4757;
-    --voxel-green: #2ed573;
-    --voxel-blue: #5352ed;
-    --voxel-purple: #a55eea;
-    --border-color: #3d3d5c;
-    --font-pixel: "Press Start 2P", cursive;
-    --font-sans: "Inter", sans-serif;
 }
 
 /*  -------------------------------------------------- HEADER -------------------------------------------------- */
@@ -111,20 +102,15 @@ html {
     color: var(--purple);
 }
 
-.nav-link.active {
-    color: var(--purple);
-    text-decoration: none;
-}
-
 /* EDIT THIS LATER*/
 .nav-link.logout {
-    color: var(--voxel-red);
+    color: var(--red);
 }
 
 /*  -------------------------------------------------- MAIN CONTENT -------------------------------------------------- */
 .main-content {
     flex: 1;
-    padding: 2rem 1rem;
+    padding: 2rem 0;
     max-width: 1200px;
     margin: 0 auto;
     width: 100%;
@@ -147,10 +133,6 @@ html {
 
 .button-primary:hover {
     background-color: var(--lilac);
-}
-
-.button-full {
-    width: 100%;
 }
 
 /*  -------------------------------------------------- HOME PAGE-------------------------------------------------- */
@@ -238,7 +220,7 @@ html {
 }
 
 .section-title {
-    font-family: var(--font-jerseY);
+    font-family: var(--font-jersey);
     font-size: var(--font-size-medium);
     text-align: center;
     margin-bottom: 2rem;
@@ -272,8 +254,8 @@ html {
 }
 
 .feature-card h3 {
-    font-family: var(--font-pixel);
-    font-size: 0.7rem;
+    font-family: var(--font-jersey);
+    font-size: var(--font-size-small);
     margin-bottom: 0.75rem;
     color: var(--purple);
 }
@@ -303,10 +285,6 @@ html {
     align-items: center;
     gap: 1rem;
     min-width: 200px;
-}
-
-.top-player-card {
-    border-color: var(--lilac);
 }
 
 .rank-badge {
@@ -466,7 +444,7 @@ html {
 }
 
 .success-icon {
-    font-size: 3rem;
+    font-size: var(--font-size-large);
     margin-bottom: 1rem;
 }
 
@@ -477,7 +455,7 @@ html {
 }
 
 .success-message {
-    font-size: 1rem;
+    font-size: var(--font-size-regular);
     margin-bottom: 1rem;
     line-height: 1.6;
 }
@@ -491,8 +469,10 @@ html {
 /*  -------------------------------------------------- GAME PAGE -------------------------------------------------- */
 
 .game-container {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
+    padding: 0;
 }
 
 .game-header {
@@ -500,7 +480,8 @@ html {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 2rem;
-    padding: 1rem;
+    padding: 0;
+    width: 100%;
 }
 
 /*  ------ PLAYER INFO ------ */
@@ -544,13 +525,14 @@ html {
 .hangman-section {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .category-badge {
     color: var(--lilac);
     font-size: var(--font-size-medium);
-    padding: 0.5rem 1rem;
+    padding: 0;
     margin-bottom: 1rem;
 }
 
@@ -643,7 +625,6 @@ html {
     gap: 0.5rem;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
     margin-bottom: 1rem;
 }
 
@@ -655,14 +636,12 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    line-height: 1;
     font-size: var(--font-size-small);
-    color: var(--twhite);
+    color: var(--white);
 }
 
 .letter-box.revealed {
-    background: var(---lilac);
+    background: var(--lilac);
     color: var(--purple);
 }
 
@@ -678,11 +657,11 @@ html {
 }
 
 .keyboard {
-    display: grid;
-    grid-template-columns: repeat(10, 40px);
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 0.5rem;
-    max-width: fit-content;
+    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -691,21 +670,10 @@ html {
     height: 45px;
     background: var(--light-lilac);
     border: 3px solid var(--lilac);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
     color: var(--lilac);
     font-size: var(--font-size-small);
-    line-height: 1;
-    text-align: center;
     cursor: pointer;
     transition: all 0.2s;
-}
-
-/* Center the final U-Z row within the 10-column keyboard grid. */
-.key:nth-child(21) {
-    grid-column-start: 3;
 }
 
 .key:hover:not(:disabled) {
@@ -764,17 +732,8 @@ html {
     text-align: center;
 }
 
-.modal-state {
-    display: none;
-}
-
-.modal.win #modal-win-state,
-.modal.lose #modal-lose-state {
-    display: block;
-}
-
 .modal-icon {
-    font-size: 3rem;
+    font-size: var(--font-size-large);
     margin-bottom: 1rem;
 }
 
@@ -809,12 +768,12 @@ html {
     display: block;
 }
 
-.modal-score-label {
+#modal-score-label {
     font-size: var(--font-size-small);
     color: var(--white);
 }
 
-.modal-score-value {
+#modal-score-value {
     font-size: var(--font-size-small);
     color: var(--white);
 }
@@ -827,15 +786,13 @@ html {
 .modal.win .modal-title,
 .modal.win .modal-message,
 .modal.win .modal-word,
-.modal.win .modal-score-label,
-.modal.win .modal-score-value {
+.modal.win #modal-score-label,
+.modal.win #modal-score-value {
     color: var(--lilac);
 }
-.modal.lose .modal-title {
-    color: var(--white);
-}
+
 .modal.lose .modal-content {
-    border-color: var(--voxel-red);
+    border-color: var(--dark-red);
 }
 
 /*  -------------------------------------------------- SCOREBOARD PAGE -------------------------------------------------- */
@@ -845,34 +802,32 @@ html {
 }
 
 .page-title {
-    font-family: var(--font-pixel);
-    font-size: 1.2rem;
+    font-size: var(--font-size-medium);
     text-align: center;
     margin-bottom: 2rem;
-    color: var(--voxel-cyan);
+    color: var(--purple);
 }
 
 .scoreboard-card {
-    background: var(--bg-card);
-    border: 2px solid var(--border-color);
+    background: var(--light-lilac);
+    border: 3px solid var(--lilac);
 }
 
 .scoreboard-header {
     display: grid;
     grid-template-columns: 60px 1fr 100px 80px;
     padding: 1rem;
-    background: var(--bg-dark);
-    font-family: var(--font-pixel);
-    font-size: 0.5rem;
-    color: var(--text-muted);
-    border-bottom: 2px solid var(--border-color);
+    background: var(--purple);
+    font-size: var(--font-size-small);
+    color: var(--white);
+    border-bottom: 3px solid var(--lilac);
 }
 
 .scoreboard-row {
     display: grid;
     grid-template-columns: 60px 1fr 100px 80px;
     padding: 1rem;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 3px solid var(--lilac);
     align-items: center;
 }
 
@@ -881,44 +836,58 @@ html {
 }
 
 .scoreboard-row.current-user {
-    background: rgba(0, 212, 170, 0.1);
+    background: var(--light-lilac);
 }
 
 .scoreboard-row.rank-1 {
-    background: rgba(255, 217, 61, 0.1);
+    background: var(--light-lilac);
 }
-.scoreboard-row.rank-2 {
-    background: rgba(192, 192, 192, 0.1);
-}
-.scoreboard-row.rank-3 {
-    background: rgba(205, 127, 50, 0.1);
+
+.scoreboard-row.rank-2,
+.scoreboard-row.rank-3,
+.scoreboard-row.rank-normal {
+    background: var(--extra-light-lilac);
 }
 
 .col-rank {
-    font-family: var(--font-pixel);
-    font-size: 0.7rem;
+    font-family: var(--font-jersey);
+    font-size: var(--font-size-small);
     text-align: center;
 }
 
-.col-player {
+.medal-icon {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.scoreboard-header .col-rank,
+.scoreboard-header .col-player,
+.scoreboard-header .col-score,
+.scoreboard-header .col-games {
+    color: var(--white);
+}
+
+.scoreboard-header .col-player {
     font-weight: 500;
 }
 
+.scoreboard-row .col-player {
+    font-weight: 500;
+    color: var(--purple);
+}
+
 .col-score {
-    font-family: var(--font-pixel);
-    font-size: 0.6rem;
-    color: var(--voxel-yellow);
+    font-family: var(--font-jersey);
+    font-size: var(--font-size-small);
+    color: var(--purple);
     text-align: right;
 }
 
 .col-games {
     text-align: right;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-}
-
-.medal {
-    font-size: 1.2rem;
+    color: var(--purple);
+    font-size: var(--font-size-small);
 }
 
 .empty-state {
@@ -928,14 +897,14 @@ html {
 
 .empty-state p {
     margin-bottom: 1rem;
-    color: var(--text-muted);
+    color: var(--grey);
 }
 
 .scoreboard-legend {
     text-align: center;
     padding: 1rem;
-    color: var(--text-muted);
-    font-size: 0.85rem;
+    color: var(--light-lilac);
+    font-size: var(--font-size-small);
 }
 
 /*  -------------------------------------------------- FOOTER -------------------------------------------------- */
@@ -945,14 +914,14 @@ html {
     text-align: center;
     border-top: 3px solid var(--light-lilac);
     color: var(--lilac);
-    font-size: 0.85rem;
+    font-size: var(--font-size-small);
 }
 
 /*  -------------------------------------------------- RESPONSIVE -------------------------------------------------- */
 
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 1.3rem;
+        font-size: var(--font-size-medium);
     }
 
     .navbar-container {
@@ -963,6 +932,6 @@ html {
     .scoreboard-header,
     .scoreboard-row {
         grid-template-columns: 50px 1fr 70px 60px;
-        font-size: 0.85rem;
+        font-size: var(--font-size-small);
     }
 }
