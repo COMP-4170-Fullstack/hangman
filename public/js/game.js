@@ -46,18 +46,15 @@ async function loadUserScore() {
     }
 }
 
-function canRefreshWord() {
-    return !gameOver && wordRefreshCount < MAX_WORD_REFRESHES;
-}
-
 function updateNewWordButtonState() {
     const refreshesLeft = Math.max(0, MAX_WORD_REFRESHES - wordRefreshCount);
-    const refreshAllowed = canRefreshWord();
+    const refreshLimitReached =
+        !gameOver && wordRefreshCount >= MAX_WORD_REFRESHES;
 
-    newGameBtn.disabled = !refreshAllowed;
-    newGameBtn.textContent = refreshAllowed
-        ? `NEW WORD (${refreshesLeft})`
-        : "ANSWER TO CONTINUE";
+    newGameBtn.disabled = refreshLimitReached;
+    newGameBtn.textContent = refreshLimitReached
+        ? "ANSWER TO CONTINUE"
+        : `NEW WORD (${refreshesLeft})`;
 }
 
 // Initialize keyboard
@@ -97,7 +94,7 @@ async function startNewGame() {
                   };
         wordData.word_id = null;
     }
-    currentWord = wordData.word.trim().toUpperCase();
+    currentWord = wordData.word;
     currentWordId = wordData.word_id ?? null;
     currentHint = wordData.hint || "";
     currentCategory = wordData.category || "DESIGN";
@@ -157,8 +154,6 @@ function handleGuess(letter) {
 
     guessedLetters.push(letter);
     const key = document.querySelector(`.key[data-letter="${letter}"]`);
-    if (!key) return;
-
     key.disabled = true;
 
     if (currentWord.includes(letter)) {
@@ -250,7 +245,7 @@ async function updateScore(isWin, wordId, pointsThisGame) {
             },
             body: JSON.stringify({
                 won: isWin,
-                wordId: wordId,
+                wordId: currentWord?.id,
                 gameScore: pointsThisGame,
             }),
         });
@@ -261,10 +256,6 @@ async function updateScore(isWin, wordId, pointsThisGame) {
 
 // Keyboard input
 document.addEventListener("keydown", (e) => {
-    if (modal && modal.classList.contains("visible")) {
-        return;
-    }
-
     const letter = e.key.toUpperCase();
     if (/^[A-Z]$/.test(letter) && !gameOver) {
         handleGuess(letter);
@@ -273,7 +264,7 @@ document.addEventListener("keydown", (e) => {
 
 // Event listeners
 newGameBtn.addEventListener("click", () => {
-    if (!canRefreshWord()) {
+    if (!gameOver && wordRefreshCount >= MAX_WORD_REFRESHES) {
         gameStatus.textContent =
             "You reached 5 word refreshes. Solve this word to continue.";
         return;
