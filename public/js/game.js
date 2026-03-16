@@ -223,8 +223,8 @@ function checkLose() {
 
 // Show game over modal
 function showModal(won, points) {
-    modal.classList.add("visible");
-    modal.classList.add(won ? "win" : "lose");
+    modal.classList.remove("win", "lose");
+    modal.classList.add("visible", won ? "win" : "lose");
     // Player completed the round; refresh allowance resets for next word.
     wordRefreshCount = 0;
     updateNewWordButtonState();

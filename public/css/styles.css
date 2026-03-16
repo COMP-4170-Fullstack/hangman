@@ -793,6 +793,14 @@ body {
     color: var(--white);
 }
 
+.modal.win #modal-lose-state {
+    display: none;
+}
+
+.modal.lose #modal-win-state {
+    display: none;
+}
+
 .modal.win .modal-content {
     background: var(--light-lilac);
     border-color: var(--lilac);
