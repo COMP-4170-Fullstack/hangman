@@ -34,6 +34,18 @@ const modalLoseScoreValue = document.getElementById("modal-lose-score-value");
 const modalWinContinueBtn = document.getElementById("modal-win-continue");
 const modalLosePlayAgainBtn = document.getElementById("modal-lose-play-again");
 
+async function loadUserScore() {
+    try {
+        const res = await fetch("/game");
+        score = window.initialScore || 0;
+        currentScoreEl.textContent = score;
+    } catch (err) {
+        console.log("Failed to load score", err);
+        score = 0;
+        currentScoreEl.textContent = "0";
+    }
+}
+
 function canRefreshWord() {
     return !gameOver && wordRefreshCount < MAX_WORD_REFRESHES;
 }
@@ -119,6 +131,10 @@ async function startNewGame() {
     modal.classList.remove("visible", "win", "lose");
 }
 
+loadUserScore();
+updateNewWordButtonState();
+startNewGame();
+
 // Update word display
 function updateWordDisplay() {
     if (!currentWord) {
@@ -182,7 +198,7 @@ function checkWin() {
         currentScoreEl.textContent = score;
 
         // Update server
-        updateScore(score, true, currentWordId, points);
+        updateScore(true, currentWordId, points);
 
         // Show modal
         showModal(true, points);
@@ -198,7 +214,7 @@ function checkLose() {
         shouldResetHangman = true;
 
         // Update server
-        updateScore(score, false, currentWordId, 0);
+        updateScore(false, currentWordId, 0);
 
         // Show modal
         showModal(false, 0);
@@ -225,14 +241,18 @@ function showModal(won, points) {
 }
 
 // Update score on server
-async function updateScore(newScore, won, wordId, gameScore) {
+async function updateScore(isWin, wordId, pointsThisGame) {
     try {
         await fetch("/api/update-score", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ newScore, won, wordId, gameScore }),
+            body: JSON.stringify({
+                won: isWin,
+                wordId: wordId,
+                gameScore: pointsThisGame,
+            }),
         });
     } catch (error) {
         console.error("Failed to update score:", error);
