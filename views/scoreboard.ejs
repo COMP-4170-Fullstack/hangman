@@ -19,9 +19,9 @@
               <% if (index === 0) { %>
                 <img class="medal-icon" src="/hangman_trophy.svg" alt="1st place" aria-hidden="true">
               <% } else if (index === 1) { %>
-                <img class="medal-icon" src="/hangman_silver%20medal.svg" alt="2nd place" aria-hidden="true">
+                <img class="medal-icon" src="/hangman_silver-medal.svg" alt="2nd place" aria-hidden="true">
               <% } else if (index === 2) { %>
-                <img class="medal-icon" src="/hangman_bronze%20medal.svg" alt="3rd place" aria-hidden="true">
+                <img class="medal-icon" src="/hangman_bronze-medal.svg" alt="3rd place" aria-hidden="true">
               <% } else { %>
                 <img class="medal-icon" src="/dead.svg" alt="<%= index + 1 %>" aria-hidden="true">
               <% } %>
@@ -71,8 +71,8 @@
       <div class="scoreboard-row ${currentUserId && player.id === currentUserId ? 'current-user' : ''} rank-${index < 3 ? index + 1 : 'normal'}">
         <span class="col-rank">
           ${index === 0 ? '<img class="medal-icon" src="/hangman_trophy.svg" alt="1st place" aria-hidden="true">' : 
-            index === 1 ? '<img class="medal-icon" src="/hangman_silver%20medal.svg" alt="2nd place" aria-hidden="true">' : 
-            index === 2 ? '<img class="medal-icon" src="/hangman_bronze%20medal.svg" alt="3rd place" aria-hidden="true">' : 
+            index === 1 ? '<img class="medal-icon" src="/hangman_silver-medal.svg" alt="2nd place" aria-hidden="true">' : 
+            index === 2 ? '<img class="medal-icon" src="/hangman_bronze-medal.svg" alt="3rd place" aria-hidden="true">' : 
             '<img class="medal-icon" src="/dead.svg" alt="' + (index + 1) + '" aria-hidden="true">'}
         </span>
         <span class="col-player">${player.username}</span>
