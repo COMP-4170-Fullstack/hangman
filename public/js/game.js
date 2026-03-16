@@ -138,6 +138,8 @@ function handleGuess(letter) {
 
     guessedLetters.push(letter);
     const key = document.querySelector(`.key[data-letter="${letter}"]`);
+    if (!key) return;
+
     key.disabled = true;
 
     if (currentWord.includes(letter)) {
