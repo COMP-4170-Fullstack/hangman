@@ -238,6 +238,10 @@ async function updateScore(newScore, won, wordId, gameScore) {
 
 // Keyboard input
 document.addEventListener("keydown", (e) => {
+    if (modal && modal.classList.contains("visible")) {
+        return;
+    }
+
     const letter = e.key.toUpperCase();
     if (/^[A-Z]$/.test(letter) && !gameOver) {
         handleGuess(letter);
